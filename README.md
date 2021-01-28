@@ -1,4 +1,4 @@
- # Sparkle Capstone 
+ # Capstone 
 
 
 <p align="center">
