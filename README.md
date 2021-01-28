@@ -1,6 +1,5 @@
-<p align="center">
-  # Sparkle Capstone 
-</p>
+ # Sparkle Capstone 
+
 
 <p align="center">
   <img  src="https://i.imgur.com/14LECtI.png">
