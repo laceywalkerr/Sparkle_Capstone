@@ -19,6 +19,8 @@ CREATE TABLE [UserProfile] (
   [FirebaseUserId] nvarchar(255),
   [DisplayName] nvarchar(255),
   [Email] nvarchar(255)
+
+  CONSTRAINT UQ_FirebaseUserId UNIQUE(FirebaseUserId)
 )
 GO
 
@@ -40,6 +42,10 @@ CREATE TABLE [Review] (
   [Views] int,
   [CategoryId] int,
   [UserProfileId] int
+
+   CONSTRAINT [FK_Review_Type] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
+   CONSTRAINT [FK_Post_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
+
 )
 GO
 
@@ -47,6 +53,9 @@ CREATE TABLE [Likes] (
   [Id] int,
   [ReviewId] int,
   [UserProfileId] int
+
+  CONSTRAINT [FK_Likes_Review] FOREIGN KEY ([ReviewId]) REFERENCES [Review] ([Id]),
+  CONSTRAINT [FK_Likes_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id]),
 )
 GO
 
@@ -54,6 +63,9 @@ CREATE TABLE [Viewed] (
   [Id] int,
   [ReviewId] int,
   [UserProfileId] int
+
+  CONSTRAINT [FK_Viewed_Review] FOREIGN KEY ([ReviewId]) REFERENCES [Review] ([Id]),
+  CONSTRAINT [FK_Viewed_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id]),
 )
 GO
 
