@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Sparkle_Capstone.Data;
+using Sparkle_Capstone.Repositories;
 
 namespace Sparkle_Capstone
 {
@@ -31,9 +32,9 @@ namespace Sparkle_Capstone
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddTransient<IReviewRepository, ReviewRepository>();
-            // services.AddTransient<IUserProfileRepository, UserProfileRepository>();
-            // services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
+            services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
