@@ -15,12 +15,12 @@ DROP TABLE IF EXISTS [Likes];
 GO
 
 CREATE TABLE [UserProfile] (
-  [Id] int PRIMARY KEY,
-  [FirebaseUserId] nvarchar(255),
-  [DisplayName] nvarchar(255),
-  [Email] nvarchar(255)
+  [Id] INTEGER PRIMARY KEY IDENTITY,
+  [FirebaseUserId] nvarchar(255) NOT NULL,
+  [DisplayName] nvarchar(50) NOT NULL,
+  [Email] nvarchar(50) NOT NULL,
 
-  CONSTRAINT UQ_FirebaseUserId UNIQUE(FirebaseUserId)
+  CONSTRAINT UQ_FirebaseUserId UNIQUE(FirebaseUserId),
   CONSTRAINT UQ_Email UNIQUE(Email)
 )
 GO
@@ -42,7 +42,7 @@ CREATE TABLE [Review] (
   [Likes] int,
   [Views] int,
   [CategoryId] int,
-  [UserProfileId] int
+  [UserProfileId] int,
 
    CONSTRAINT [FK_Review_Type] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
    CONSTRAINT [FK_Post_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
@@ -53,7 +53,7 @@ GO
 CREATE TABLE [Likes] (
   [Id] int,
   [ReviewId] int,
-  [UserProfileId] int
+  [UserProfileId] int,
 
   CONSTRAINT [FK_Likes_Review] FOREIGN KEY ([ReviewId]) REFERENCES [Review] ([Id]),
   CONSTRAINT [FK_Likes_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id]),
@@ -63,27 +63,10 @@ GO
 CREATE TABLE [Viewed] (
   [Id] int,
   [ReviewId] int,
-  [UserProfileId] int
+  [UserProfileId] int,
 
   CONSTRAINT [FK_Viewed_Review] FOREIGN KEY ([ReviewId]) REFERENCES [Review] ([Id]),
   CONSTRAINT [FK_Viewed_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id]),
 )
 GO
 
-ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [Review] ([UserProfileId])
-GO
-
-ALTER TABLE [Review] ADD FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id])
-GO
-
-ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [Viewed] ([UserProfileId])
-GO
-
-ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [Likes] ([UserProfileId])
-GO
-
-ALTER TABLE [Review] ADD FOREIGN KEY ([Id]) REFERENCES [Likes] ([ReviewId])
-GO
-
-ALTER TABLE [Review] ADD FOREIGN KEY ([Id]) REFERENCES [Viewed] ([ReviewId])
-GO

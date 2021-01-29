@@ -2,9 +2,9 @@
 INSERT INTO [UserProfile]
   ([Id], [FirebaseUserId], [DisplayName], [Email])
 VALUES 
-  (1, 'firebaseid', 'LindaBelcher', 'lindab@gmail.com'),
-  (2, 'firebaseid', 'TinaBelcher', 'tina@gmail.com'),
-  (3, 'firebaseid', 'BobBelcher', 'bob@gmail.com');
+  (1, 'firebaseid1', 'LindaBelcher', 'lindab@gmail.com'),
+  (2, 'firebaseid2', 'TinaBelcher', 'tina@gmail.com'),
+  (3, 'firebaseid3', 'BobBelcher', 'bob@gmail.com');
 
 SET IDENTITY_INSERT [UserProfile] OFF
 
