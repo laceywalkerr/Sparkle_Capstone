@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS [Category];
 DROP TABLE IF EXISTS [UserProfile];
 DROP TABLE IF EXISTS [Viewed];
 DROP TABLE IF EXISTS [Likes];
-
+GO
 
 CREATE TABLE [UserProfile] (
   [Id] int PRIMARY KEY,
@@ -21,6 +21,7 @@ CREATE TABLE [UserProfile] (
   [Email] nvarchar(255)
 
   CONSTRAINT UQ_FirebaseUserId UNIQUE(FirebaseUserId)
+  CONSTRAINT UQ_Email UNIQUE(Email)
 )
 GO
 
