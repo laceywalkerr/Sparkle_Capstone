@@ -26,7 +26,7 @@ namespace Sparkle_Capstone.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var currentUser = GetCurrentUserProfile();
+            //var currentUser = GetCurrentUserProfile();
 
             var categories = _categoryRepo.Get();
             return Ok(categories);
@@ -35,18 +35,18 @@ namespace Sparkle_Capstone.Controllers
         [HttpPost]
         public IActionResult Post(Category category)
         {
-            var currentUser = GetCurrentUserProfile();
+            //var currentUser = GetCurrentUserProfile();
 
 
             _categoryRepo.Add(category);
             return CreatedAtAction("Get", new { id = category.Id }, category);
         }
 
-        private UserProfile GetCurrentUserProfile()
-        {
-            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return _userRepo.GetByFirebaseUserId(firebaseUserId);
-        }
+        //private UserProfile GetCurrentUserProfile()
+        //{
+        //    var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //    return _userRepo.GetByFirebaseUserId(firebaseUserId);
+        //}
     }
 }
 
