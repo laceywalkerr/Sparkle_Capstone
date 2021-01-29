@@ -9,7 +9,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <ToastContainer position="bottom-right" hideProgressBar />
+      {/* <ToastContainer position="bottom-right" hideProgressBar /> */}
       <UserProfileProvider>
         <Router>
           {/* <AppHeader /> */}

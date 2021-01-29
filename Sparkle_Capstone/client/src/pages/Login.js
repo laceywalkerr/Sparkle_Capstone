@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { Button, Input } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -19,12 +19,12 @@ const Login = () => {
         login(email, password)
             .then((user) => {
                 setLoading(false);
-                toast.info(`Welcome back ${user.displayName}`);
+                // toast.info(`Welcome back ${user.displayName}`);
                 history.push("/");
             })
             .catch((err) => {
                 setLoading(false);
-                toast.error("Invalid email or password");
+                // toast.error("Invalid email or password");
             });
     };
 
