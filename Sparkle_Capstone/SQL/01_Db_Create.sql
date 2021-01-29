@@ -7,6 +7,14 @@ GO
 USE [Sparkle]
 GO
 
+ALTER TABLE [Likes] DROP CONSTRAINT [FK_Likes_Review];
+ALTER TABLE [Review] DROP CONSTRAINT [FK_Review_Category];
+ALTER TABLE [Likes] DROP CONSTRAINT [FK_Likes_UserProfile];
+ALTER TABLE [Review] DROP CONSTRAINT [FK_Review_UserProfile];
+ALTER TABLE [Viewed] DROP CONSTRAINT [FK_Viewed_Review];
+ALTER TABLE [Viewed] DROP CONSTRAINT [FK_Viewed_UserProfile];
+GO
+
 DROP TABLE IF EXISTS [Review];
 DROP TABLE IF EXISTS [Category];
 DROP TABLE IF EXISTS [UserProfile];
@@ -33,7 +41,7 @@ GO
 
 CREATE TABLE [Review] (
   [Id] INTEGER PRIMARY KEY IDENTITY,
-  [NameOfProduct] nvarchar,
+  [NameOfProduct] nvarchar(255),
   [Content] text,
   [ImageLocation] nvarchar(255),
   [PurchaseLocation] nvarchar(255),
@@ -44,8 +52,8 @@ CREATE TABLE [Review] (
   [CategoryId] int,
   [UserProfileId] int,
 
-   CONSTRAINT [FK_Review_Type] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
-   CONSTRAINT [FK_Post_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
+   CONSTRAINT [FK_Review_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
+   CONSTRAINT [FK_Review_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
 
 )
 GO
@@ -69,4 +77,7 @@ CREATE TABLE [Viewed] (
   CONSTRAINT [FK_Viewed_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id]),
 )
 GO
+
+
+
 

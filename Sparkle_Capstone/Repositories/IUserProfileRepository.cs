@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sparkle_Capstone.Repositories
 {
-    interface IUserProfileRepository
+    public interface IUserProfileRepository
     {
 
         void Add(UserProfile userProfile);

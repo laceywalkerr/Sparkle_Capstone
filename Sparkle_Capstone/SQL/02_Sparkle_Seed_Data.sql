@@ -14,7 +14,7 @@ INSERT INTO [Category]
 VALUES 
  (1, 'Mascara'),
  (2, 'Lipstick'),
- (3, 'Eyeshaddow'),
+ (3, 'Eyeshadow'),
  (4, 'Eyeliner'),
  (5, 'Lipgloss'),
  (6, 'Highlighter'),
