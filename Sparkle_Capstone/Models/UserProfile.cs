@@ -20,7 +20,7 @@ namespace Sparkle_Capstone
         [MaxLength(50)]
         public string Email { get; set; }
 
-        // public List<Review> Review { get; set; }
+        public List<Review> Review { get; set; }
 
     }
 }
