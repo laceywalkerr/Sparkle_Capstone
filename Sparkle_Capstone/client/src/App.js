@@ -4,7 +4,7 @@ import { UserProfileProvider } from "./providers/UserProfileProvider";
 // import { ToastContainer } from "react-toastify";
 import "./App.css";
 // import "react-toastify/dist/ReactToastify.css";
-// import AppHeader from "./components/AppHeader";
+import AppHeader from "./components/AppHeader";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       {/* <ToastContainer position="bottom-right" hideProgressBar /> */}
       <UserProfileProvider>
         <Router>
-          {/* <AppHeader /> */}
+          <AppHeader />
           <ApplicationViews />
         </Router>
       </UserProfileProvider>
