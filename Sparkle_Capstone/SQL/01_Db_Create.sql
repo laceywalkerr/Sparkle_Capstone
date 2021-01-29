@@ -26,13 +26,13 @@ CREATE TABLE [UserProfile] (
 GO
 
 CREATE TABLE [Category] (
-  [Id] integer PRIMARY KEY,
+  [Id] INTEGER PRIMARY KEY IDENTITY,
   [Name] nvarchar(255)
 )
 GO
 
 CREATE TABLE [Review] (
-  [Id] int PRIMARY KEY,
+  [Id] INTEGER PRIMARY KEY IDENTITY,
   [NameOfProduct] nvarchar,
   [Content] text,
   [ImageLocation] nvarchar(255),
@@ -51,7 +51,7 @@ CREATE TABLE [Review] (
 GO
 
 CREATE TABLE [Likes] (
-  [Id] int,
+  [Id] INTEGER PRIMARY KEY IDENTITY,
   [ReviewId] int,
   [UserProfileId] int,
 
@@ -61,7 +61,7 @@ CREATE TABLE [Likes] (
 GO
 
 CREATE TABLE [Viewed] (
-  [Id] int,
+  [Id] INTEGER PRIMARY KEY IDENTITY,
   [ReviewId] int,
   [UserProfileId] int,
 
