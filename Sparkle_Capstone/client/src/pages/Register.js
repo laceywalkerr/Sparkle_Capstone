@@ -31,7 +31,7 @@ const Register = () => {
         register(profile, password)
             .then((user) => {
                 setLoading(false);
-                // toast.info(`Welcome ${user.displayName}`);
+                // alert(`Welcome ${user.displayName}`);
                 history.push("/");
             })
             .catch((err) => {

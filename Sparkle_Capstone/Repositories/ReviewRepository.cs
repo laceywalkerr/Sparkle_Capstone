@@ -26,6 +26,8 @@ namespace Sparkle_Capstone.Repositories
                 .Select(r => new ReviewSummary()
                 {
                     Id = r.Id,
+                        NameOfProduct = r.NameOfProduct,
+                        Content = r.Content,
                         ImageLocation = r.ImageLocation,
                         UserId = r.UserProfileId,
                         DisplayName = r.UserProfile.DisplayName,
@@ -52,11 +54,13 @@ namespace Sparkle_Capstone.Repositories
                 .Select(r => new ReviewSummary()
                 {
                     Id = r.Id,
-                    ImageLocation = r.ImageLocation,
-                    UserId = r.UserProfileId,
-                    DisplayName = r.UserProfile.DisplayName,
-                    PublishDateTime = r.PublishDateTime,
-                    Category = r.Category
+                        ImageLocation = r.ImageLocation,
+                        NameOfProduct = r.NameOfProduct,
+                        Content = r.Content,
+                        UserId = r.UserProfileId,
+                        DisplayName = r.UserProfile.DisplayName,
+                        PublishDateTime = r.PublishDateTime,
+                        Category = r.Category
                 })
                 .ToList();
         }
