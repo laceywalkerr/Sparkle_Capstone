@@ -4,8 +4,8 @@ import { UserProfileContext } from "../providers/UserProfileProvider";
 // import Explore from "../pages/Explore";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-// import ReviewDetails from "../pages/ReviewDetails";
-// import CategoryManager from "../pages/CategoryManager";
+import ReviewDetails from "../pages/ReviewDetails";
+import CategoryManager from "../pages/CategoryManager";
 
 const ApplicationViews = () => {
     const { isLoggedIn } = useContext(UserProfileContext);
@@ -17,13 +17,13 @@ const ApplicationViews = () => {
             </Route>
             {/* <Route path="/explore">
                 {isLoggedIn ? <Explore /> : <Redirect to="/login" />}
-            </Route>
+            </Route> */}
             <Route path="/review/:reviewId">
                 {isLoggedIn ? <ReviewDetails /> : <Redirect to="/login" />}
             </Route>
             <Route path="/categories">
                 {isLoggedIn ? <CategoryManager /> : <Redirect to="/login" />}
-            </Route> */}
+            </Route>
             <Route path="/login">
                 <Login />
             </Route>

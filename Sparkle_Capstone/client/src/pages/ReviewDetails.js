@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import { Container, Jumbotron } from "reactstrap";
-import ReviewReactions from "../components/reviews/ReviewReactions";
-import formatDate from "../utils/dateFormatter";
+import { useParams } from "react-router-dom";
+// import { Card } from "reactstrap";
+// import ReviewReactions from "../components/reviews/ReviewReactions";
+// import formatDate from "../utils/dateFormatter";
 import { UserProfileContext } from '../providers/UserProfileProvider';
 
 const ReviewDetails = () => {
     const { reviewId } = useParams();
     const [review, setReview] = useState();
-    const [reactionCounts, setReactionCounts] = useState([]);
+    // const [reactionCounts, setReactionCounts] = useState([]);
     const { getToken } = useContext(UserProfileContext);
-    const history = useHistory();
+    // const history = useHistory();
 
     useEffect(() => {
         return getToken().then((token) =>
@@ -31,20 +31,23 @@ const ReviewDetails = () => {
                 .then((data) => {
                     if (data) {
                         setReview(data ? data.review : null);
-                        setReactionCounts(data.reactionCounts);
+                        // setReactionCounts(data.reactionCounts);
                     }
                 }));
     }, [reviewId]);
+
+
 
     if (!review) return null;
 
     return (
         <div>
-            <Jumbotron
+            <div
                 className="review-details__jumbo"
                 style={{ backgroundImage: `url('${review.imageLocation}')` }}
-            ></Jumbotron>
+            ></div>
             <div className="container">
+                <h1>Review Details</h1>
                 <h1>{review.title}</h1>
                 <h5 className="text-danger">{review.category.name}</h5>
                 <div className="row">
@@ -55,14 +58,14 @@ const ReviewDetails = () => {
                         />
                         <p className="d-inline-block">{review.userProfile.displayName}</p>
                     </div>
-                    <div className="col">
+                    {/* <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div>{review.content}</div>
-                <div>
+                {/* <div>
                     <ReviewReactions reviewReactions={reactionCounts} />
-                </div>
+                </div> */}
             </div>
 
         </div>

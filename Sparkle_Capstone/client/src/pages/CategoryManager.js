@@ -3,11 +3,12 @@ import {
     ListGroup,
     ListGroupItem
 } from "reactstrap";
-import Category from "../components/Category";
+import Category from "../components/Category.js";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
 const CategoryManager = () => {
     const { getToken } = useContext(UserProfileContext);
+    const [categories] = useState([]);
 
 
     useEffect(() => {
@@ -24,9 +25,6 @@ const CategoryManager = () => {
                 },
             })
                 .then((res) => res.json())
-                .then((categories) => {
-                    setCategories(categories);
-                })
         );
     };
 
