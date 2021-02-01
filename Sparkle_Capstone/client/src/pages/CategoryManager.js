@@ -3,7 +3,8 @@ import {
     ListGroup,
     ListGroupItem
 } from "reactstrap";
-import { Category } from "../components/Category.js";
+import CategorySummaryCard from "../components/CategorySummaryCard";
+// import { Category } from "../components/Category.js";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
 const CategoryManager = () => {
@@ -39,7 +40,7 @@ const CategoryManager = () => {
                     <ListGroup>
                         {categories.map((category) => (
                             <ListGroupItem key={category.id}>
-                                <Category category={category} />
+                                <CategorySummaryCard category={category} />
                             </ListGroupItem>
                         ))}
                     </ListGroup>

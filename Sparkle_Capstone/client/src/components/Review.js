@@ -26,8 +26,6 @@ const Review = ({ review }) => {
         setIsEditing(false);
         setReviewEdits("");
     };
-    category
-    post
     return (
         <div className="justify-content-between row">
             {isEditing ? (
