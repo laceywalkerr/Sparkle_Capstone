@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sparkle_Capstone.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Sparkle_Capstone.Data;
+using Sparkle_Capstone.Models.ViewModels;
 
 namespace Sparkle_Capstone.Repositories
 {
@@ -16,24 +17,23 @@ namespace Sparkle_Capstone.Repositories
             _context = context;
         }
 
-        //public List<ReviewSummary> Get()
-        //{
-        //    return _context.Review
-        //        .Include(r => r.Category)
-        //        .Where(r => r.PublishDateTime <= DateTime.Now)
-        //        .OrderByDescending(r => r.PublishDateTime)
-        //        .Select(r => new ReviewSummary()
-        //        {
-        //            Id = r.Id,
-        //            ImageLocation = r.ImageLocation,
-        //            Title = r.Title,
-        //            AuthorId = r.UserProfileId,
-        //            DisplayName = r.UserProfile.DisplayName,
-        //            PublishDateTime = r.PublishDateTime,
-        //            Category = r.Category
-        //        })
-        //        .ToList();
-        //}
+        public List<ReviewSummary> Get()
+        {
+            return _context.Review
+                .Include(r => r.Category)
+                .Where(r => r.PublishDateTime <= DateTime.Now)
+                .OrderByDescending(r => r.PublishDateTime)
+                .Select(r => new ReviewSummary()
+                {
+                    Id = r.Id,
+                        ImageLocation = r.ImageLocation,
+                        UserId = r.UserProfileId,
+                        DisplayName = r.UserProfile.DisplayName,
+                        PublishDateTime = r.PublishDateTime,
+                        Category = r.Category
+                })
+                .ToList();
+        }
 
         public Review GetById(int id)
         {
