@@ -44,6 +44,23 @@ namespace Sparkle_Capstone.Repositories
                 .FirstOrDefault();
         }
 
+        public List<ReviewSummary> GetByUserId(int userId)
+        {
+            return _context.Review
+                .Include(r => r.Category)
+                .Where(r => r.UserProfileId == userId)
+                .Select(r => new ReviewSummary()
+                {
+                    Id = r.Id,
+                    ImageLocation = r.ImageLocation,
+                    UserId = r.UserProfileId,
+                    DisplayName = r.UserProfile.DisplayName,
+                    PublishDateTime = r.PublishDateTime,
+                    Category = r.Category
+                })
+                .ToList();
+        }
+
         public List<Likes> GetLikeCounts(int postId)
         {
             throw new NotImplementedException();
