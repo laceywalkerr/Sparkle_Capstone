@@ -7,6 +7,7 @@ const ReviewSummaryCard = ({ review }) => {
     return (
         <Card>
             <div className="row">
+                <h1>Review Summaries</h1>
                 <div className="col-lg-3 col-sm-12">
                     <Link to={`/review/${review.id}`}>
                         <div

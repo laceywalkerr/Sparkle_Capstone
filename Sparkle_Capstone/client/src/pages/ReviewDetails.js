@@ -8,7 +8,6 @@ import { UserProfileContext } from '../providers/UserProfileProvider';
 const ReviewDetails = () => {
     const { reviewId } = useParams();
     const [review, setReview] = useState();
-    // const [reactionCounts, setReactionCounts] = useState([]);
     const { getToken } = useContext(UserProfileContext);
     // const history = useHistory();
 
@@ -31,7 +30,6 @@ const ReviewDetails = () => {
                 .then((data) => {
                     if (data) {
                         setReview(data ? data.review : null);
-                        // setReactionCounts(data.reactionCounts);
                     }
                 }));
     }, [reviewId]);

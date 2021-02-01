@@ -3,17 +3,16 @@ import {
     ListGroup,
     ListGroupItem
 } from "reactstrap";
-import Category from "../components/Category.js";
+import { Category } from "../components/Category.js";
 import { UserProfileContext } from "../providers/UserProfileProvider";
 
 const CategoryManager = () => {
     const { getToken } = useContext(UserProfileContext);
-    const [categories] = useState([]);
+    const [categories, setCategories] = useState([]);
 
 
     useEffect(() => {
         getCategories();
-
     }, []);
 
     const getCategories = () => {
@@ -25,18 +24,15 @@ const CategoryManager = () => {
                 },
             })
                 .then((res) => res.json())
+                .then((categories) => {
+                    console.log(categories); setCategories(categories);
+                })
         );
     };
 
 
     return (
         <div className="container mt-5">
-            {/* <img
-        height="100"
-        src="/photo.png"
-        alt="Sparkle Logo"
-        className="bg-danger rounded-circle"
-      /> */}
             <h1>Categories</h1>
             <div>
                 <div>
