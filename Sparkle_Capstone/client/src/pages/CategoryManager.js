@@ -35,6 +35,8 @@ const CategoryManager = () => {
     return (
         <div className="container mt-5">
             <h1>Categories</h1>
+            <br />
+            <h5>The categories below are what users may tag their reviews with.</h5>
             <div>
                 <div>
                     <ListGroup>
