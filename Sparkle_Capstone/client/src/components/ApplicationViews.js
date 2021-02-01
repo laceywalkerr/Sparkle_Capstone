@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { UserProfileContext } from "../providers/UserProfileProvider";
-// import Explore from "../pages/Explore";
+import Explore from "../pages/Explore";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ReviewDetails from "../pages/ReviewDetails";
@@ -15,9 +15,9 @@ const ApplicationViews = () => {
             <Route path="/" exact>
                 {isLoggedIn ? <p>Home</p> : <Redirect to="/login" />}
             </Route>
-            {/* <Route path="/explore">
+            <Route path="/explore">
                 {isLoggedIn ? <Explore /> : <Redirect to="/login" />}
-            </Route> */}
+            </Route>
             <Route path="/review/:reviewId">
                 {isLoggedIn ? <ReviewDetails /> : <Redirect to="/login" />}
             </Route>

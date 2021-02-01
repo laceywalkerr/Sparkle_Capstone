@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserProfileContext } from "../providers/UserProfileProvider"
-import ReviewList from "../components/reviews/List";
+import ReviewList from "../components/ReviewList.js";
 
 const Explore = () => {
 
