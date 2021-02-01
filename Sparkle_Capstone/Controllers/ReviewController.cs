@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Sparkle_Capstone.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Sparkle_Capstone.Models.ViewModels;
+using Sparkle_Capstone.Repositories;
 
 namespace Sparkle_Capstone.Controllers
 {
@@ -20,29 +21,28 @@ namespace Sparkle_Capstone.Controllers
             _repo = repo;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var reviews = _repo.Get();
+            return Ok(reviews);
+        }
 
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-        //    var reviews = _repo.Get();
-        //    return Ok(reviews);
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var review = _repo.GetById(id);
+            if (review == null)
+            {
+                return NotFound();
+            }
 
-        //[HttpGet("{id}")]
-        //public IActionResult GetById(int id)
-        //{
-        //    var review = _repo.GetById(id);
-        //    if (review == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-            //var reviewDetails = new ReviewDetails()
-            //{
-            //    Review = review,
-            //    ReactionCounts = reactionCounts
-            //};
-            //return Ok(reviewDetails);
-        //}
+            var reviewDetails = new ReviewDetails()
+            {
+                Review = review
+                //ReactionCounts = reactionCounts
+            };
+            return Ok(reviewDetails);
+        }
     }
 }
