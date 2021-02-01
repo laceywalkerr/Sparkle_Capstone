@@ -31,9 +31,9 @@ const Login = () => {
     return (
         <div className="login-form">
             <form onSubmit={handleSubmit}>
-                <div className="avatar bg-primary">
+                {/* <div className="avatar bg-primary">
                     <img src="/quill.png" alt="Avatar" />
-                </div>
+                </div> */}
                 <h2 className="text-center">User Login</h2>
                 <div className="form-group">
                     <Input
