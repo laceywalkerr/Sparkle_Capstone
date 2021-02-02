@@ -7,7 +7,7 @@ const ReviewList = ({ reviews }) => {
 
         <div>
             <p>
-                <Link className="btn btn-primary" to="/reviews/add">Add A Review</Link>
+                <Link className="btn btn-primary" to="/review/create">Add A Review</Link>
             </p>
             {reviews.map((review) => (
                 <div className="m-4" key={review.id}>
