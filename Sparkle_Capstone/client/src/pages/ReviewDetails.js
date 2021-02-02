@@ -34,8 +34,6 @@ const ReviewDetails = () => {
                 }));
     }, [reviewId]);
 
-
-
     if (!review) return null;
 
     return (

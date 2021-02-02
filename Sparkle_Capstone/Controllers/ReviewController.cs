@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -54,6 +55,21 @@ namespace Sparkle_Capstone.Controllers
                 //ReactionCounts = reactionCounts
             };
             return Ok(reviewDetails);
+        }
+
+        [HttpPost]
+        public IActionResult Post(Review review)
+        {
+            var currentUser = GetCurrentUserProfile();
+
+            _repo.Add(review);
+            return CreatedAtAction("Get", new { id = review.Id }, review);
+        }
+
+        private UserProfile GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepo.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }

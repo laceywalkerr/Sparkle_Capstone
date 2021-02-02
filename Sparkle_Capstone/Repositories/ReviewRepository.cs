@@ -82,6 +82,12 @@ namespace Sparkle_Capstone.Repositories
             throw new NotImplementedException();
         }
 
+        public void Add(Review review)
+        {
+            _context.Add(review);
+            _context.SaveChanges();
+        }
+
     }
 
 }
