@@ -19,9 +19,10 @@ namespace Sparkle_Capstone.Controllers
         private IReviewRepository _repo;
         private IUserProfileRepository _userRepo;
 
-        public ReviewController(IReviewRepository repo)
+        public ReviewController(IReviewRepository repo, IUserProfileRepository userRepo)
         {
             _repo = repo;
+            _userRepo = userRepo;
         }
 
         [HttpGet]
@@ -35,8 +36,8 @@ namespace Sparkle_Capstone.Controllers
         public IActionResult GetByUserId()
         {
             var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
-            var posts = _repo.GetByUserId(firebaseUser.Id);
-            return Ok(posts);
+            var reviews = _repo.GetByUserId(firebaseUser.Id);
+            return Ok(reviews);
         }
 
         [HttpGet("{reviewId}/{userId}")]
@@ -52,7 +53,6 @@ namespace Sparkle_Capstone.Controllers
             var reviewDetails = new ReviewDetails()
             {
                 Review = review
-                //ReactionCounts = reactionCounts
             };
             return Ok(reviewDetails);
         }
