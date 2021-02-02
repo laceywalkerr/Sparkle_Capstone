@@ -26,8 +26,11 @@ const Explore = () => {
 
     return (
         <div className="row">
-            <div className="col-lg-2 col-xs-12"></div>
+            <div className="col-lg-2 col-xs-12">
+            </div>
+
             <div className="col-lg-10 col-xs-12">
+                <h1>All Reviews</h1>
                 <ReviewList reviews={reviews} />
             </div>
         </div>
