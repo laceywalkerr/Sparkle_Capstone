@@ -25,6 +25,7 @@ const MyReviews = () => {
                         return res.json();
                     })
                     .then(data => {
+                        console.log(data);
                         setMyReviews(data)
                     })
 
