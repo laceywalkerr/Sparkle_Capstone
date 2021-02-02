@@ -35,5 +35,5 @@ Other stretch goals include posting a link to the product, as well as possibly u
 
 
 
-//Secret temporary video for setup [here](https://us02web.zoom.us/rec/share/Bgnm4gt_tnzLDqYjurEu6fNlNFKR1JvUIv6MJPzV3pUn5O7SorCKThA7oZSOENH5.CPfq3-FjcpbbHSvt) Passcode is %wmVL*5@
+Secret temporary video for setup [here](https://us02web.zoom.us/rec/share/Bgnm4gt_tnzLDqYjurEu6fNlNFKR1JvUIv6MJPzV3pUn5O7SorCKThA7oZSOENH5.CPfq3-FjcpbbHSvt) Passcode is %wmVL*5@
 
