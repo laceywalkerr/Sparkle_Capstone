@@ -7,7 +7,6 @@ import Register from "../pages/Register";
 // import ReviewDetails from "../pages/ReviewDetails";
 import MyReviews from "../pages/MyReviews";
 import ReviewCreate from "../pages/ReviewCreate";
-// import Home from "../pages/Home";
 import CategoryManager from "../pages/CategoryManager";
 
 const ApplicationViews = () => {

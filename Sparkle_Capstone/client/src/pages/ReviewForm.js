@@ -17,15 +17,13 @@ const ReviewForm = ({ editableReview }) => {
 
     useEffect(() => {
         if (editableReview) {
-            // Attempting to get DatePicker to actually show date info
-            // It doesn't like it even when I try to reformat it.
             if (editableReview.publishDateTime !== null) {
                 const pubDate = editableReview.publishDateTime.split("T")[0]
                 editableReview.publishDateTime = pubDate
             }
             setReview(editableReview)
         }
-        getCategories()
+        getCategories();
     }, []);
 
     const getCategories = () => {
@@ -117,7 +115,6 @@ const ReviewForm = ({ editableReview }) => {
             updateReview({
                 userId: editableReview.userId,
                 id: editableReview.id,
-                userId,
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
                 categoryId: review.categoryId,
@@ -151,13 +148,13 @@ const ReviewForm = ({ editableReview }) => {
             <h1>{!editableReview ? "Create" : "Edit"} Review</h1>
             <form onSubmit={createReview}>
                 <fieldset>
-                    <label htmlFor="reviewTitle">Title: </label>
+                    <label htmlFor="reviewTitle">Product Name: </label>
                     <input
                         onChange={handleControlledInputChange}
                         maxLength="255"
-                        id="reviewTitle"
-                        name="title"
-                        defaultValue={review.title}
+                        // id="reviewTitle"
+                        // name="title"
+                        defaultValue={review.nameOfProduct}
                         placeholder="Add The Name of the Product"
                         required />
                 </fieldset>
