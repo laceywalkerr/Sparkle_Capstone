@@ -65,18 +65,18 @@ namespace Sparkle_Capstone.Repositories
                 .ToList();
         }
 
-        public List<Likes> GetLikeCounts(int postId)
+        public List<Likes> GetLikeCounts(int reviewId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Viewed> GetViewCounts(int postId)
+        public List<Viewed> GetViewCounts(int reviewId)
         {
             //    return _context.Reaction
             //        .Select(r => new ViewCount()
             //        {
             //            Reaction = r,
-            //            Count = r.ReviewReactions.Count(pr => pr.ReviewId == postId)
+            //            Count = r.ReviewReactions.Count(pr => pr.ReviewId == reviewId)
             //        })
             //        .ToList();
             throw new NotImplementedException();
