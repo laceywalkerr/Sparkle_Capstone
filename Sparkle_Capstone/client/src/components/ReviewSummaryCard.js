@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "reactstrap";
-// import formatDate from "../../utils/dateFormatter";
+import formatDate from "../../src/utils/dateFormatter";
 
 const ReviewSummaryCard = ({ review }) => {
     return (
@@ -24,15 +24,15 @@ const ReviewSummaryCard = ({ review }) => {
                         </Link>
                         <strong className="text-danger">Category: {review.category.name}</strong>
                     </div>
-                    <h5>Date:
-                    {/* <p className="text-justify mx-5">{review.previewText}</p> */}
-                    </h5>
+                    {/* <h5>
+                     <p className="text-justify mx-5">{review.previewText}</p> 
+                    </h5> */}
                 </div>
                 <div className="col-lg-4 col-sm-12 mt-2 py-3 text-left">
                     <p className="ml-5 text-info">Written by {review.displayName}</p>
-                    {/* <p className="ml-5">
+                    <p className="ml-5">
                         Published on {formatDate(review.publishDateTime)}
-                    </p> */}
+                    </p>
                 </div>
             </div>
         </Card>

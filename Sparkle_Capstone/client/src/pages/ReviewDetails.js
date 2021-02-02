@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 // import { Card } from "reactstrap";
 // import ReviewReactions from "../components/reviews/ReviewReactions";
-// import formatDate from "../utils/dateFormatter";
+import formatDate from "../utils/dateFormatter";
 import { UserProfileContext } from '../providers/UserProfileProvider';
 
 const ReviewDetails = () => {
@@ -54,9 +54,9 @@ const ReviewDetails = () => {
                         />
                         <p className="d-inline-block">{review.userProfile.displayName}</p>
                     </div>
-                    {/* <div className="col">
+                    <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
-                    </div> */}
+                    </div>
                 </div>
                 <div>{review.content}</div>
                 {/* <div>
