@@ -21,7 +21,7 @@ const ReviewDetails = () => {
             })
                 .then((res) => {
                     if (res.status === 404) {
-                        alert("* Nope *");
+                        alert("* Details page is not made yet *");
                         // history.push("/explore")
                         return
                     }
@@ -33,8 +33,6 @@ const ReviewDetails = () => {
                     }
                 }));
     }, [reviewId]);
-
-
 
     if (!review) return null;
 

@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "reactstrap";
-import formatDate from "../../utils/dateFormatter";
+// import formatDate from "../../utils/dateFormatter";
 
 const ReviewSummaryCard = ({ review }) => {
     return (
         <Card>
             <div className="row">
-                <h1>Review Summaries</h1>
                 <div className="col-lg-3 col-sm-12">
                     <Link to={`/review/${review.id}`}>
                         <div
@@ -19,18 +18,21 @@ const ReviewSummaryCard = ({ review }) => {
                 </div>
                 <div className="col-lg-5 col-sm-12 py-3">
                     <div>
+
                         <Link to={`/review/${review.id}`}>
-                            <h2>{review.title}</h2>
+                            <h3>Product: {review.nameOfProduct}</h3>
                         </Link>
-                        <strong className="text-danger">{review.category.name}</strong>
+                        <strong className="text-danger">Category: {review.category.name}</strong>
                     </div>
+                    <h5>Date:
                     {/* <p className="text-justify mx-5">{review.previewText}</p> */}
+                    </h5>
                 </div>
                 <div className="col-lg-4 col-sm-12 mt-2 py-3 text-left">
-                    <p className="ml-5 text-info">Written by {review.DisplayName}</p>
-                    <p className="ml-5">
+                    <p className="ml-5 text-info">Written by {review.displayName}</p>
+                    {/* <p className="ml-5">
                         Published on {formatDate(review.publishDateTime)}
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </Card>

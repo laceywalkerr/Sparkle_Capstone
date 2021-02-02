@@ -26,6 +26,8 @@ namespace Sparkle_Capstone.Repositories
                 .Select(r => new ReviewSummary()
                 {
                     Id = r.Id,
+                        NameOfProduct = r.NameOfProduct,
+                        Content = r.Content,
                         ImageLocation = r.ImageLocation,
                         UserId = r.UserProfileId,
                         DisplayName = r.UserProfile.DisplayName,
@@ -44,21 +46,46 @@ namespace Sparkle_Capstone.Repositories
                 .FirstOrDefault();
         }
 
-        public List<Likes> GetLikeCounts(int postId)
+        public List<ReviewSummary> GetByUserId(int userId)
+        {
+            return _context.Review
+                .Include(r => r.Category)
+                .Where(r => r.UserProfileId == userId)
+                .Select(r => new ReviewSummary()
+                {
+                    Id = r.Id,
+                        ImageLocation = r.ImageLocation,
+                        NameOfProduct = r.NameOfProduct,
+                        Content = r.Content,
+                        UserId = r.UserProfileId,
+                        DisplayName = r.UserProfile.DisplayName,
+                        PublishDateTime = r.PublishDateTime,
+                        Category = r.Category
+                })
+                .ToList();
+        }
+
+        public List<Likes> GetLikeCounts(int reviewId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Viewed> GetViewCounts(int postId)
+        public List<Viewed> GetViewCounts(int reviewId)
         {
             //    return _context.Reaction
             //        .Select(r => new ViewCount()
             //        {
             //            Reaction = r,
-            //            Count = r.ReviewReactions.Count(pr => pr.ReviewId == postId)
+            //            Count = r.ReviewReactions.Count(pr => pr.ReviewId == reviewId)
             //        })
             //        .ToList();
             throw new NotImplementedException();
+        }
+
+        public void Add(Review review)
+        {
+            _context.Add(review);
+            _context.SaveChanges();
         }
 
     }

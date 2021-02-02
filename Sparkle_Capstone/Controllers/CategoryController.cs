@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Sparkle_Capstone.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Sparkle_Capstone.Repositories;
 
 namespace Sparkle_Capstone.Controllers
 {
@@ -37,16 +37,14 @@ namespace Sparkle_Capstone.Controllers
         {
             //var currentUser = GetCurrentUserProfile();
 
-
             _categoryRepo.Add(category);
             return CreatedAtAction("Get", new { id = category.Id }, category);
         }
 
-        //private UserProfile GetCurrentUserProfile()
-        //{
-        //    var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        //    return _userRepo.GetByFirebaseUserId(firebaseUserId);
-        //}
+        private UserProfile GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepo.GetByFirebaseUserId(firebaseUserId);
+        }
     }
 }
-
