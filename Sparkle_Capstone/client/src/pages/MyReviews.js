@@ -5,11 +5,12 @@ import { UserProfileContext } from "../providers/UserProfileProvider"
 const MyReviews = () => {
     const { getToken } = useContext(UserProfileContext)
 
-    const userId = localStorage.getItem("userProfileId");
+    const userId = localStorage.getItem("userProfile");
     const [myReviews, setMyReviews] = useState([]);
 
     useEffect(() => {
-        if (userId !== null) {
+        console.log(userId);
+        if (userId.Id !== null) {
             getToken().then((token) =>
                 fetch(`/api/review/getbyuserid`, {
                     method: "GET",
@@ -25,7 +26,7 @@ const MyReviews = () => {
                         return res.json();
                     })
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         setMyReviews(data)
                     })
 
