@@ -1,5 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import {
+    Button,
+    ButtonGroup,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+} from "reactstrap";
 // import { Card } from "reactstrap";
 // import ReviewReactions from "../components/reviews/ReviewReactions";
 import formatDate from "../utils/dateFormatter";
@@ -9,10 +17,12 @@ const ReviewDetails = () => {
     const { reviewId } = useParams();
     const [review, setReview] = useState();
     const { getToken } = useContext(UserProfileContext);
-    // const history = useHistory();
-    debugger
+    const [pendingDelete, setPendingDelete] = useState(false);
+    const history = useHistory();
+    // const userId = localStorage.getItem("userProfileId");
+
     useEffect(() => {
-        console.log(review);
+
         return getToken().then((token) =>
             fetch(`/api/review/${reviewId}`, {
                 method: "GET",
@@ -23,7 +33,7 @@ const ReviewDetails = () => {
                 .then((res) => {
                     if (res.status === 404) {
                         alert("* Details page is not made yet *");
-                        // history.push("/explore")
+                        history.push("/explore")
                         return
                     }
                     return res.json();
@@ -58,6 +68,22 @@ const ReviewDetails = () => {
                     <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
                     </div>
+
+                    {
+                        // If it's my review, show me edit/delete options
+                        // !isAdmin() && review.userProfileId !== userId ? null : 
+                        <ButtonGroup size="sm">
+                            <Button className="btn btn-primary" onClick={e => history.push(`/review/edit/${reviewId}`)}>
+                                Edit
+                            </Button>
+                            <Button
+                                className="btn btn-danger"
+                                onClick={e => setPendingDelete(true)}
+                            >
+                                Delete
+                            </Button>
+                        </ButtonGroup>
+                    }
                 </div>
                 <div>{review.content}</div>
                 {/* <div>
