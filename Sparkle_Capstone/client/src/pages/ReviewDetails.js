@@ -91,6 +91,34 @@ const ReviewDetails = () => {
                 </div> */}
             </div>
 
+            <Modal isOpen={pendingDelete}>
+                <ModalHeader>Delete Review: {review.nameOfProduct}?</ModalHeader>
+                <ModalBody>
+                    Are you sure you want to delete this review? This action cannot be undone.
+                </ModalBody>
+                <ModalFooter>
+                    <Button onClick={(e) => setPendingDelete(false)}>No, Cancel</Button>
+                    <Button onClick={e => {
+                        getToken().then(token =>
+                            fetch(`/api/review/${review.id}`, {
+                                method: "DELETE",
+                                headers: {
+                                    Authorization: `Bearer ${token}`,
+                                },
+                            }).then(res => {
+                                if (res.status === 204) {
+                                    alert("review deleted!")
+                                    history.push("/explore")
+                                } else {
+                                    alert("Error! Unable to delete review!")
+                                }
+                            }))
+                    }}
+                        className="btn btn-outline-danger">Yes, Delete</Button>
+                </ModalFooter>
+            </Modal>
+
+
         </div>
 
     );
