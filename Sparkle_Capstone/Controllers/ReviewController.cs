@@ -40,23 +40,41 @@ namespace Sparkle_Capstone.Controllers
             return Ok(reviews);
         }
 
-        [HttpGet("{reviewId}/{userId}")]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
-            var reviews = _repo.GetByUserId(firebaseUser.Id);
             var review = _repo.GetById(id);
             if (review == null)
             {
                 return NotFound();
             }
 
+            //var reactionCounts = _repo.GetReactionCounts(id);
             var reviewDetails = new ReviewDetails()
             {
-                Review = review
+                Review = review,
+                // ReactionCounts = reactionCounts
             };
             return Ok(reviewDetails);
         }
+
+        // [HttpGet("{reviewId}/{userId}")]
+        // public IActionResult GetById(int id)
+        // {
+        //     var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
+        //     var reviews = _repo.GetByUserId(firebaseUser.Id);
+        //     var review = _repo.GetById(id);
+        //     if (review == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     var reviewDetails = new ReviewDetails()
+        //     {
+        //         Review = review
+        //     };
+        //     return Ok(reviewDetails);
+        // }
 
         //[HttpPost]
         //public IActionResult Post(Review review)
