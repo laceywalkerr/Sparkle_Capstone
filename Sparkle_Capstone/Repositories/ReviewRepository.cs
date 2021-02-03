@@ -72,13 +72,6 @@ namespace Sparkle_Capstone.Repositories
 
         public List<Viewed> GetViewCounts(int reviewId)
         {
-            //    return _context.Reaction
-            //        .Select(r => new ViewCount()
-            //        {
-            //            Reaction = r,
-            //            Count = r.ReviewReactions.Count(pr => pr.ReviewId == reviewId)
-            //        })
-            //        .ToList();
             throw new NotImplementedException();
         }
 
@@ -87,6 +80,20 @@ namespace Sparkle_Capstone.Repositories
             _context.Add(review);
             _context.SaveChanges();
         }
+
+
+        public void Delete(Review review)
+        {
+            _context.Review.Remove(review);
+            _context.SaveChanges();
+        }
+
+        public void Update(Review review)
+        {
+            _context.Entry(review).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
 
     }
 

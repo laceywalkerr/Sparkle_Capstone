@@ -14,5 +14,7 @@ namespace Sparkle_Capstone.Repositories
         List<Viewed> GetViewCounts(int reivewId);
         List<Likes> GetLikeCounts(int reviewId);
         void Add(Review review);
+        void Delete(Review review);
+        void Update(Review review);
     }
 }
