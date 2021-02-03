@@ -45,15 +45,15 @@ const ReviewDetails = () => {
             ></div>
             <div className="container">
                 <h1>Review Details</h1>
-                <h1>{review.nameOfProduct}</h1>
+                <h3>{review.nameOfProduct}</h3>
                 <h5 className="text-danger">{review.category.name}</h5>
                 <div className="row">
                     <div className="col">
-                        <img
+                        {/* <img
                             src={review.userProfile.imageLocation}
                             alt={review.userProfile.displayName}
-                        />
-                        <p className="d-inline-block">{review.userProfile.displayName}</p>
+                        /> */}
+                        <p className="d-inline-block">Review By: {review.userProfile.displayName}</p>
                     </div>
                     <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
