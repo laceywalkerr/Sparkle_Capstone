@@ -13,7 +13,8 @@ const ReviewForm = ({ editableReview }) => {
 
     const [loading, setLoading] = useState(true);
 
-    const userId = +localStorage.getItem("userProfileId");
+    let user = localStorage.getItem("userProfile");
+    user = JSON.parse(user);
 
     useEffect(() => {
         if (editableReview) {
@@ -38,6 +39,7 @@ const ReviewForm = ({ editableReview }) => {
                 .then((categories) => {
                     setCategories(categories)
                     setLoading(false)
+                    console.log(categories);
                 })
         );
     };
@@ -113,7 +115,7 @@ const ReviewForm = ({ editableReview }) => {
         }
         if (editableReview !== undefined) {
             updateReview({
-                userId: editableReview.userId,
+                userProfileId: editableReview.user.id,
                 id: editableReview.id,
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
@@ -122,11 +124,12 @@ const ReviewForm = ({ editableReview }) => {
                 publishDateTime: review.publishDateTime
             })
         } else {
+            debugger
             addReview({
-                userId: userId,
+                userProfileId: user.id,
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
-                categoryId: +review.categoryId,
+                categoryId: review.categoryId,
                 imageLocation: review.imageLocation,
                 publishDateTime: review.publishDateTime,
                 IsApproved: true
@@ -152,10 +155,10 @@ const ReviewForm = ({ editableReview }) => {
                     <input
                         onChange={handleControlledInputChange}
                         maxLength="255"
-                        // id="reviewTitle"
-                        // name="title"
+                        id="reviewTitle"
+                        name="nameOfProduct"
                         defaultValue={review.nameOfProduct}
-                        placeholder="Add The Name of the Product"
+                        placeholder="Name of the Product"
                         required />
                 </fieldset>
                 <fieldset>

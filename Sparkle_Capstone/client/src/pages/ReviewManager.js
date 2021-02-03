@@ -36,6 +36,7 @@ const ReviewManager = () => {
 
     const saveNewReview = () => {
         const reviewToAdd = { name: newReview };
+        console.log(reviewToAdd);
         getToken().then((token) =>
             fetch("/api/review", {
                 method: "POST",

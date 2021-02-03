@@ -26,6 +26,5 @@ namespace Sparkle_Capstone
         public Category Category { get; set; }
         public int UserProfileId { get; set; }
         public UserProfile UserProfile { get; set; }
-
     }
 }
