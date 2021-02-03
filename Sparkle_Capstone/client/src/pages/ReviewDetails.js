@@ -10,8 +10,9 @@ const ReviewDetails = () => {
     const [review, setReview] = useState();
     const { getToken } = useContext(UserProfileContext);
     // const history = useHistory();
-
+    debugger
     useEffect(() => {
+        console.log(review);
         return getToken().then((token) =>
             fetch(`/api/review/${reviewId}`, {
                 method: "GET",

@@ -44,6 +44,7 @@ namespace Sparkle_Capstone.Controllers
         public IActionResult GetById(int id)
         {
             var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
+            var reviews = _repo.GetByUserId(firebaseUser.Id);
             var review = _repo.GetById(id);
             if (review == null)
             {
