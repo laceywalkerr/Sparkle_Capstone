@@ -1,10 +1,14 @@
 import React from "react";
 import ReviewSummaryCard from "./ReviewSummaryCard";
+import { Link } from "react-router-dom";
 
 const ReviewList = ({ reviews }) => {
     return (
+
         <div>
-            <h1>Review Summaries</h1>
+            <p>
+                <Link className="btn btn-primary" to="/review/create">Add A Review</Link>
+            </p>
             {reviews.map((review) => (
                 <div className="m-4" key={review.id}>
                     <ReviewSummaryCard review={review} />

@@ -44,7 +44,7 @@ const ReviewDetails = () => {
             ></div>
             <div className="container">
                 <h1>Review Details</h1>
-                <h1>{review.title}</h1>
+                <h1>{review.nameOfProduct}</h1>
                 <h5 className="text-danger">{review.category.name}</h5>
                 <div className="row">
                     <div className="col">

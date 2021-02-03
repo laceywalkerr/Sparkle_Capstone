@@ -19,7 +19,7 @@ const Review = ({ review }) => {
 
     const showEditForm = () => {
         setIsEditing(true);
-        setReviewEdits(review.NameOfProduct);
+        setReviewEdits(review.nameOfProduct);
     };
 
     const hideEditForm = () => {
@@ -46,7 +46,7 @@ const Review = ({ review }) => {
                 </Form>
             ) : (
                     <>
-                        <div className="p-1">{Review.NameOfProduct}</div>
+                        <div className="p-1">{Review.nameOfProduct}</div>
                         <ButtonGroup size="sm">
                             <Button className="btn btn-primary" onClick={showEditForm}>
                                 Edit
@@ -61,7 +61,7 @@ const Review = ({ review }) => {
                     </>
                 )}
             <Modal isOpen={pendingDelete}>
-                <ModalHeader>Delete {review.NameOfProduct} Review?</ModalHeader>
+                <ModalHeader>Delete {review.nameOfProduct} Review?</ModalHeader>
                 <ModalBody>
                     Are you sure you want to delete this Review?
             </ModalBody>

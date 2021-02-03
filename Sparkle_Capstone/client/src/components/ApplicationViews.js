@@ -6,7 +6,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 // import ReviewDetails from "../pages/ReviewDetails";
 import MyReviews from "../pages/MyReviews";
-// import Home from "../pages/Home";
+import ReviewCreate from "../pages/ReviewCreate";
 import CategoryManager from "../pages/CategoryManager";
 
 const ApplicationViews = () => {
@@ -24,6 +24,9 @@ const ApplicationViews = () => {
             </Route>
             <Route path="/my_reviews">
                 {isLoggedIn ? <MyReviews /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/review/create">
+                {isLoggedIn ? <ReviewCreate /> : <Redirect to="/login" />}
             </Route>
             <Route path="/categories">
                 {isLoggedIn ? <CategoryManager /> : <Redirect to="/login" />}

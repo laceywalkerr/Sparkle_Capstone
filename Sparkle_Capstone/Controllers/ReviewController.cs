@@ -57,13 +57,20 @@ namespace Sparkle_Capstone.Controllers
             return Ok(reviewDetails);
         }
 
-        [HttpPost]
-        public IActionResult Post(Review review)
-        {
-            var currentUser = GetCurrentUserProfile();
+        //[HttpPost]
+        //public IActionResult Post(Review review)
+        //{
+        //    var currentUser = GetCurrentUserProfile();
 
+        //    _repo.Add(review);
+        //    return CreatedAtAction("Get", new { id = review.Id }, review);
+        //}
+
+        [HttpPost]
+        public IActionResult Add(Review review)
+        {
             _repo.Add(review);
-            return CreatedAtAction("Get", new { id = review.Id }, review);
+            return Ok(review);
         }
 
         private UserProfile GetCurrentUserProfile()
