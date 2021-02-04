@@ -19,7 +19,8 @@ const ReviewDetails = () => {
     const { getToken } = useContext(UserProfileContext);
     const [pendingDelete, setPendingDelete] = useState(false);
     const history = useHistory();
-    // const userId = localStorage.getItem("userProfileId");
+    let userId = localStorage.getItem("userProfile");
+    userId = JSON.parse(userId);
 
     useEffect(() => {
 
@@ -71,18 +72,18 @@ const ReviewDetails = () => {
 
                     {
                         // If it's my review, show me edit/delete options
-                        // !isAdmin() && review.userProfileId !== userId ? null : 
-                        <ButtonGroup size="sm">
-                            <Button className="btn btn-primary" onClick={e => history.push(`/review/edit/${reviewId}`)}>
-                                Edit
+                        review.userProfile.id !== userId.id ? null :
+                            <ButtonGroup size="sm">
+                                <Button className="btn btn-primary" onClick={e => history.push(`/review/edit/${reviewId}`)}>
+                                    Edit
                             </Button>
-                            <Button
-                                className="btn btn-danger"
-                                onClick={e => setPendingDelete(true)}
-                            >
-                                Delete
+                                <Button
+                                    className="btn btn-danger"
+                                    onClick={e => setPendingDelete(true)}
+                                >
+                                    Delete
                             </Button>
-                        </ButtonGroup>
+                            </ButtonGroup>
                     }
                 </div>
                 <div>{review.content}</div>
