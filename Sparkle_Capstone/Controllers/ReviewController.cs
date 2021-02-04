@@ -97,5 +97,25 @@ namespace Sparkle_Capstone.Controllers
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userRepo.GetByFirebaseUserId(firebaseUserId);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            //var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
+            var reviewToDelete = _repo.GetById(id);
+
+            if (reviewToDelete == null)
+            {
+                return NotFound();
+            }
+
+            //if (firebaseUser.UserTypeId != 1 && firebaseUser.Id != postAuthor)
+            //{
+            //    return NotFound();
+            //}
+
+            _repo.Delete(reviewToDelete);
+            return NoContent();
+        }
     }
 }
