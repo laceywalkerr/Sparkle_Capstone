@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom";
-import ReviewForm from "../../components/reviews/ReviewForm"
-import { UserProfileContext } from '../../providers/UserProfileProvider';
+import ReviewForm from "../pages/ReviewForm"
+import { UserProfileContext } from '../providers/UserProfileProvider';
 
 
 const ReviewEdit = () => {
