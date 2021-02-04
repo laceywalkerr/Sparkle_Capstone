@@ -74,32 +74,31 @@ const ReviewForm = ({ editableReview }) => {
     }
 
     const updateReview = updatedReview => {
-        // getToken().then(token =>
-        //     fetch(`/api/review/${reviewId}`, {
-        //         method: "PUT",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Authorization: `Bearer ${token}`,
-        //         },
-        //         body: JSON.stringify(updatedReview)
-        //     }))
-        //     .then(res => {
-        //         if (res.status === 200) {
-        //             alert(`Review is updated!`)
-        //             return res.json();
-        //         } else {
-        //             toast.error(`Error! Unable to edit review!`)
-        //             return
-        //         }
-        //     })
-        //     .then(review => {
-        //         // Depending on if we have a response, push to the new review
-        //         if (!review) {
-        //             return
-        //         } else {
-        //             history.push(`/review/${review.id}`)
-        //         }
-        //     })
+        getToken().then(token =>
+            fetch(`/api/review/${reviewId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(updatedReview)
+            }))
+            .then(res => {
+                if (res.status === 200) {
+                    alert(`Review is updated!`)
+                    return res.json();
+                } else {
+                    alert(`Error! Unable to edit review!`)
+                    return
+                }
+            })
+            .then(review => {
+                if (!review) {
+                    return
+                } else {
+                    history.push(`/review/${review.id}`)
+                }
+            })
     }
 
     const handleControlledInputChange = e => {
