@@ -74,6 +74,7 @@ const ReviewForm = ({ editableReview }) => {
     }
 
     const updateReview = updatedReview => {
+        console.log("Form");
         getToken().then(token =>
             fetch(`/api/review/${reviewId}`, {
                 method: "PUT",
@@ -86,17 +87,10 @@ const ReviewForm = ({ editableReview }) => {
             .then(res => {
                 if (res.status === 200) {
                     alert(`Review is updated!`)
-                    return res.json();
+                    history.push(`/review/${review.id}`)
                 } else {
                     alert(`Error! Unable to edit review!`)
                     return
-                }
-            })
-            .then(review => {
-                if (!review) {
-                    return
-                } else {
-                    history.push(`/review/${review.id}`)
                 }
             })
     }
@@ -114,7 +108,7 @@ const ReviewForm = ({ editableReview }) => {
         }
         if (editableReview !== undefined) {
             updateReview({
-                userProfileId: editableReview.user.id,
+                userProfileId: editableReview.userProfileId,
                 id: editableReview.id,
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,

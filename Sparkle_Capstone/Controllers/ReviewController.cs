@@ -88,28 +88,21 @@ namespace Sparkle_Capstone.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Review review)
         {
-            // var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
+            var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
 
-            // var userProfile = review.UserProfileId;
-            // if (firebaseUser.Id != userProfile)
-            // {
-            //     return NotFound();
-            // }
-
-            // if (id != review.Id)
-            // {
-            //     return BadRequest();
-            // }
-
-            var reviewToEdit = _repo.GetById(id);
-
-            if (reviewToEdit == null)
+            var userProfile = review.UserProfileId;
+            if (firebaseUser.Id != userProfile)
             {
                 return NotFound();
             }
 
-            _repo.Update(reviewToEdit);
-            return NoContent();
+            if (id != review.Id)
+            {
+                return BadRequest();
+            }
+
+            _repo.Update(review);
+            return Ok();
         }
     }
 }

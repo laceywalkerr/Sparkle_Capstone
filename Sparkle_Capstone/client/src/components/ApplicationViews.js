@@ -29,10 +29,10 @@ const ApplicationViews = () => {
             <Route path="/review/create">
                 {isLoggedIn ? <ReviewCreate /> : <Redirect to="/login" />}
             </Route>
-            <Route path="/review/:reviewId">
+            <Route exact path="/review/:reviewId">
                 {isLoggedIn ? <ReviewDetails /> : <Redirect to="/login" />}
             </Route>
-            <Route path="/review/edit/:reviewId">
+            <Route exact path="/review/edit/:reviewId">
                 {isLoggedIn ? <ReviewEdit /> : <Redirect to="/login" />}
             </Route>
             <Route path="/categories">

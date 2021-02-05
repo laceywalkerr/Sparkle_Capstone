@@ -29,6 +29,7 @@ const ReviewEdit = () => {
 
     return (
         <div className="container mt-5">
+            console.log("Edit.js");
             <ReviewForm editableReview={review.review} />
         </div>
     )
