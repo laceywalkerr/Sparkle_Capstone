@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom";
-import ReviewForm from "../../components/reviews/ReviewForm"
-import { UserProfileContext } from '../../providers/UserProfileProvider';
+import ReviewForm from "../pages/ReviewForm"
+import { UserProfileContext } from '../providers/UserProfileProvider';
 
 
 const ReviewEdit = () => {
@@ -29,6 +29,7 @@ const ReviewEdit = () => {
 
     return (
         <div className="container mt-5">
+            console.log("Edit.js");
             <ReviewForm editableReview={review.review} />
         </div>
     )

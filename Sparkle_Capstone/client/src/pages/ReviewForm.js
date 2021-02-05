@@ -74,32 +74,25 @@ const ReviewForm = ({ editableReview }) => {
     }
 
     const updateReview = updatedReview => {
-        // getToken().then(token =>
-        //     fetch(`/api/review/${reviewId}`, {
-        //         method: "PUT",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Authorization: `Bearer ${token}`,
-        //         },
-        //         body: JSON.stringify(updatedReview)
-        //     }))
-        //     .then(res => {
-        //         if (res.status === 200) {
-        //             alert(`Review is updated!`)
-        //             return res.json();
-        //         } else {
-        //             toast.error(`Error! Unable to edit review!`)
-        //             return
-        //         }
-        //     })
-        //     .then(review => {
-        //         // Depending on if we have a response, push to the new review
-        //         if (!review) {
-        //             return
-        //         } else {
-        //             history.push(`/review/${review.id}`)
-        //         }
-        //     })
+        console.log("Form");
+        getToken().then(token =>
+            fetch(`/api/review/${reviewId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(updatedReview)
+            }))
+            .then(res => {
+                if (res.status === 200) {
+                    alert(`Review is updated!`)
+                    history.push(`/review/${review.id}`)
+                } else {
+                    alert(`Error! Unable to edit review!`)
+                    return
+                }
+            })
     }
 
     const handleControlledInputChange = e => {
@@ -115,7 +108,7 @@ const ReviewForm = ({ editableReview }) => {
         }
         if (editableReview !== undefined) {
             updateReview({
-                userProfileId: editableReview.user.id,
+                userProfileId: editableReview.userProfileId,
                 id: editableReview.id,
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
@@ -124,7 +117,6 @@ const ReviewForm = ({ editableReview }) => {
                 publishDateTime: review.publishDateTime
             })
         } else {
-            debugger
             addReview({
                 userProfileId: user.id,
                 nameOfProduct: review.nameOfProduct,

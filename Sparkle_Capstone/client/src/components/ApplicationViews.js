@@ -5,6 +5,7 @@ import Explore from "../pages/Explore";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import ReviewDetails from "../pages/ReviewDetails";
+import ReviewEdit from "../pages/ReviewEdit";
 import MyReviews from "../pages/MyReviews";
 import ReviewCreate from "../pages/ReviewCreate";
 import CategoryManager from "../pages/CategoryManager";
@@ -28,8 +29,11 @@ const ApplicationViews = () => {
             <Route path="/review/create">
                 {isLoggedIn ? <ReviewCreate /> : <Redirect to="/login" />}
             </Route>
-            <Route path="/review/:reviewId">
+            <Route exact path="/review/:reviewId">
                 {isLoggedIn ? <ReviewDetails /> : <Redirect to="/login" />}
+            </Route>
+            <Route exact path="/review/edit/:reviewId">
+                {isLoggedIn ? <ReviewEdit /> : <Redirect to="/login" />}
             </Route>
             <Route path="/categories">
                 {isLoggedIn ? <CategoryManager /> : <Redirect to="/login" />}

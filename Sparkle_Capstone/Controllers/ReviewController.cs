@@ -58,33 +58,6 @@ namespace Sparkle_Capstone.Controllers
             return Ok(reviewDetails);
         }
 
-        // [HttpGet("{reviewId}/{userId}")]
-        // public IActionResult GetById(int id)
-        // {
-        //     var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
-        //     var reviews = _repo.GetByUserId(firebaseUser.Id);
-        //     var review = _repo.GetById(id);
-        //     if (review == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     var reviewDetails = new ReviewDetails()
-        //     {
-        //         Review = review
-        //     };
-        //     return Ok(reviewDetails);
-        // }
-
-        //[HttpPost]
-        //public IActionResult Post(Review review)
-        //{
-        //    var currentUser = GetCurrentUserProfile();
-
-        //    _repo.Add(review);
-        //    return CreatedAtAction("Get", new { id = review.Id }, review);
-        //}
-
         [HttpPost]
         public IActionResult Add(Review review)
         {
@@ -101,7 +74,6 @@ namespace Sparkle_Capstone.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            //var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
             var reviewToDelete = _repo.GetById(id);
 
             if (reviewToDelete == null)
@@ -109,13 +81,28 @@ namespace Sparkle_Capstone.Controllers
                 return NotFound();
             }
 
-            //if (firebaseUser.UserTypeId != 1 && firebaseUser.Id != postAuthor)
-            //{
-            //    return NotFound();
-            //}
-
             _repo.Delete(reviewToDelete);
             return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Review review)
+        {
+            var firebaseUser = ControllerUtils.GetCurrentUserProfile(_userRepo, User);
+
+            var userProfile = review.UserProfileId;
+            if (firebaseUser.Id != userProfile)
+            {
+                return NotFound();
+            }
+
+            if (id != review.Id)
+            {
+                return BadRequest();
+            }
+
+            _repo.Update(review);
+            return Ok();
         }
     }
 }
