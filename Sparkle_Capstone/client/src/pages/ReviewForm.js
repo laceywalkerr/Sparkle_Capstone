@@ -246,7 +246,7 @@ const ReviewForm = ({ editableReview }) => {
                     <progress value={progress} max="100" />
                     <br />
                     <input type="file" onChange={handleChange} />
-                    <button onClick={handleUpload}>upload</button>
+                    <button onClick={handleUpload}>Upload Photo</button>
                     <br />
                     {url}
                 </div>
