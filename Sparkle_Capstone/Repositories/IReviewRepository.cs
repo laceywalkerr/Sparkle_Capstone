@@ -16,5 +16,6 @@ namespace Sparkle_Capstone.Repositories
         void Add(Review review);
         void Delete(Review review);
         void Update(Review review);
+        List<ReviewSummary> Search(string p);
     }
 }

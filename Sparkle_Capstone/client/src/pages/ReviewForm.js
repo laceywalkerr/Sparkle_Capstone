@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import { useHistory, useParams } from "react-router-dom";
+//photo stuff
+import { storage } from '../firebase';
+import { render } from "react-dom";
+//photo stuff end
 
 const ReviewForm = ({ editableReview }) => {
 
@@ -12,6 +16,49 @@ const ReviewForm = ({ editableReview }) => {
     const [review, setReview] = useState("");
 
     const [loading, setLoading] = useState(true);
+
+    //photo stuff 
+    const [imageUrl, setImageUrl] = useState("");
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState("");
+    const [progress, setProgress] = useState(0);
+
+    const handleChange = e => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+    };
+
+    const handleUpload = () => {
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const progress = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                setProgress(progress);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                    .ref("images")
+                    .child(image.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        console.log("hello:", url);
+                        setUrl(url);
+                        setImageUrl(url);
+                        constructNewReview(url);
+                    });
+            }
+        );
+    };
+
+    console.log("image: ", image);
+    //photo stuff end
 
     let user = localStorage.getItem("userProfile");
     user = JSON.parse(user);
@@ -25,7 +72,7 @@ const ReviewForm = ({ editableReview }) => {
             setReview(editableReview)
         }
         getCategories();
-    }, []);
+    }, [image]);
 
     const getCategories = () => {
         getToken().then((token) =>
@@ -101,7 +148,7 @@ const ReviewForm = ({ editableReview }) => {
         setReview(newReview)
     }
 
-    const constructNewReview = () => {
+    const constructNewReview = (url) => {
         if (!review.categoryId) {
             alert("Error! Must select a Category!")
             return
@@ -113,7 +160,7 @@ const ReviewForm = ({ editableReview }) => {
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
                 categoryId: review.categoryId,
-                imageLocation: review.imageLocation,
+                imageLocation: url,
                 publishDateTime: review.publishDateTime
             })
         } else {
@@ -122,7 +169,7 @@ const ReviewForm = ({ editableReview }) => {
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
                 categoryId: review.categoryId,
-                imageLocation: review.imageLocation,
+                imageLocation: url,
                 publishDateTime: review.publishDateTime,
                 IsApproved: true
             })
@@ -131,7 +178,8 @@ const ReviewForm = ({ editableReview }) => {
 
     const createReview = (e) => {
         e.preventDefault()
-        constructNewReview()
+        handleUpload()
+
     }
 
     if (!categories) {
@@ -180,7 +228,7 @@ const ReviewForm = ({ editableReview }) => {
                         ))}
                     </select>
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <label html="reviewHeader">(Optional) Header Image URL: </label>
                     <input
                         onChange={handleControlledInputChange}
@@ -189,7 +237,22 @@ const ReviewForm = ({ editableReview }) => {
                         defaultValue={review.imageLocation}
                         placeholder="Add image URL"
                     />
-                </fieldset>
+                </fieldset> */}
+
+
+                <div>
+                    Please upload a review photo!
+                    <br />
+                    {/* {review.imageLocation ? <img src={review.imageLocation} alt="review item image" /> : <img src={url} alt="review item image" />} */}
+
+                    <br />
+                    <input type="file" onChange={handleChange} />
+                    {/* <button onClick={handleUpload}>Upload Photo</button> */}
+                    <br />
+                    {review.imageLocation ? null : url}
+                </div>
+
+
                 <fieldset>
                     <label htmlFor="PublishDateTime">(Optional) Publication Date</label>
                     <input
