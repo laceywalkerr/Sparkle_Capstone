@@ -6,23 +6,49 @@ const Explore = () => {
 
     const [reviews, setReviews] = useState([]);
     const { getToken } = useContext(UserProfileContext);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
+        if (reviews !== []) {
+            return getToken().then(token =>
+                fetch("/api/review", {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                    .then(res => {
+                        if (res.status === 401) {
+                        }
+                        return res.json()
+                    })
+                    .then(reviews => setReviews(reviews))
+            )
+        }
+    }, []);
+
+
+    const getSearch = () => {
         return getToken().then(token =>
-            fetch("/api/review", {
+            fetch(`/api/review/search?p=${search}`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             })
                 .then(res => {
+
                     if (res.status === 401) {
                     }
                     return res.json()
                 })
-                .then(reviews => setReviews(reviews))
+
+                .then(reviews => {
+                    setReviews(reviews)
+                })
         )
-    }, []);
+    }
+
 
     return (
         <div className="row">
@@ -31,6 +57,10 @@ const Explore = () => {
 
             <div className="col-lg-10 col-xs-12">
                 <h1>All Reviews</h1>
+                <div class="form-inline my-9 my-lg-0 navbar-right">
+                    <input onChange={(s) => setSearch(s.target.value)} class="form-control mr-sm-2" type="text" placeholder="Search" />
+                    <button onClick={getSearch} class="btn btn-secondary my-2 my-sm-0">Search</button>
+                </div>
                 <ReviewList reviews={reviews} />
             </div>
         </div>

@@ -164,7 +164,6 @@ const ReviewForm = ({ editableReview }) => {
                 publishDateTime: review.publishDateTime
             })
         } else {
-            debugger
             addReview({
                 userProfileId: user.id,
                 nameOfProduct: review.nameOfProduct,

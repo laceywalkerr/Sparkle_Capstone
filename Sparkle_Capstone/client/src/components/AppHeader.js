@@ -63,10 +63,6 @@ const AppHeader = () => {
                                         </NavLink>
                                 </NavItem>
                                 </>
-                                <form class="form-inline my-9 my-lg-0 navbar-right">
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" />
-                                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                                </form>
                                 <NavItem>
                                     <NavLink onClick={logoutAndReturn} tag={Link}>
                                         Logout

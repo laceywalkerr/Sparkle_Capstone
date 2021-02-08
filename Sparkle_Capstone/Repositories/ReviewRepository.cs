@@ -37,6 +37,26 @@ namespace Sparkle_Capstone.Repositories
                 .ToList();
         }
 
+        public List<ReviewSummary> Search(string p)
+        {
+            return _context.Review
+                .Include(r => r.Category)
+                .Where(r => r.PublishDateTime <= DateTime.Now && r.Category.Name.Contains(p) || r.NameOfProduct.Contains(p) || r.Content.Contains(p) )
+                .OrderByDescending(r => r.PublishDateTime)
+                .Select(r => new ReviewSummary()
+                {
+                    Id = r.Id,
+                    NameOfProduct = r.NameOfProduct,
+                    Content = r.Content,
+                    ImageLocation = r.ImageLocation,
+                    UserId = r.UserProfileId,
+                    DisplayName = r.UserProfile.DisplayName,
+                    PublishDateTime = r.PublishDateTime,
+                    Category = r.Category
+                })
+                .ToList();
+        }
+
         public Review GetById(int id)
         {
             return _context.Review

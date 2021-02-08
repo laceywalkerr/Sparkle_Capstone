@@ -32,6 +32,13 @@ namespace Sparkle_Capstone.Controllers
             return Ok(reviews);
         }
 
+        [HttpGet("search")]
+        public IActionResult Search(string p)
+        {
+            var reviews = _repo.Search(p);
+            return Ok(reviews);
+        }
+
         [HttpGet("getbyuserid")]
         public IActionResult GetByUserId()
         {
