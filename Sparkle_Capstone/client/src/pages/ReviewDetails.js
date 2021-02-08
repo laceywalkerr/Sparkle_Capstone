@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import {
     Button,
     ButtonGroup,
+    Jumbotron,
     Modal,
     ModalBody,
     ModalFooter,
@@ -50,10 +51,10 @@ const ReviewDetails = () => {
 
     return (
         <div>
-            <div
+            <Jumbotron
                 className="review-details__jumbo"
                 style={{ backgroundImage: `url('${review.imageLocation}')` }}
-            ></div>
+            ></Jumbotron>
             <div className="container">
                 <h1>Review Details</h1>
                 <h3>{review.nameOfProduct}</h3>

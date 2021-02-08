@@ -48,9 +48,10 @@ const ReviewForm = ({ editableReview }) => {
                     .child(image.name)
                     .getDownloadURL()
                     .then(url => {
-                        // console.log("hello:", url);
+                        console.log("hello:", url);
                         setUrl(url);
                         setImageUrl(url);
+                        constructNewReview(url);
                     });
             }
         );
@@ -71,7 +72,7 @@ const ReviewForm = ({ editableReview }) => {
             setReview(editableReview)
         }
         getCategories();
-    }, []);
+    }, [image]);
 
     const getCategories = () => {
         getToken().then((token) =>
@@ -147,7 +148,7 @@ const ReviewForm = ({ editableReview }) => {
         setReview(newReview)
     }
 
-    const constructNewReview = () => {
+    const constructNewReview = (url) => {
         if (!review.categoryId) {
             alert("Error! Must select a Category!")
             return
@@ -159,16 +160,17 @@ const ReviewForm = ({ editableReview }) => {
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
                 categoryId: review.categoryId,
-                imageLocation: review.imageLocation,
+                imageLocation: url,
                 publishDateTime: review.publishDateTime
             })
         } else {
+            debugger
             addReview({
                 userProfileId: user.id,
                 nameOfProduct: review.nameOfProduct,
                 content: review.content,
                 categoryId: review.categoryId,
-                imageLocation: review.imageLocation,
+                imageLocation: url,
                 publishDateTime: review.publishDateTime,
                 IsApproved: true
             })
@@ -177,7 +179,8 @@ const ReviewForm = ({ editableReview }) => {
 
     const createReview = (e) => {
         e.preventDefault()
-        constructNewReview()
+        handleUpload()
+
     }
 
     if (!categories) {
@@ -241,14 +244,13 @@ const ReviewForm = ({ editableReview }) => {
                 <div>
                     Please upload a review photo!
                     <br />
-                    <img src={url || "http://via.placeholder.com/300"} alt="review item image" />
-                    <br />
-                    <progress value={progress} max="100" />
+                    {/* {review.imageLocation ? <img src={review.imageLocation} alt="review item image" /> : <img src={url} alt="review item image" />} */}
+
                     <br />
                     <input type="file" onChange={handleChange} />
-                    <button onClick={handleUpload}>Upload Photo</button>
+                    {/* <button onClick={handleUpload}>Upload Photo</button> */}
                     <br />
-                    {url}
+                    {review.imageLocation ? null : url}
                 </div>
 
 
