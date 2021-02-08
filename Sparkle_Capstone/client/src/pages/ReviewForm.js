@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import { useHistory, useParams } from "react-router-dom";
+//photo stuff
+import { storage } from '../firebase';
+import { render } from "react-dom";
+//photo stuff end
 
 const ReviewForm = ({ editableReview }) => {
 
@@ -12,6 +16,48 @@ const ReviewForm = ({ editableReview }) => {
     const [review, setReview] = useState("");
 
     const [loading, setLoading] = useState(true);
+
+    //photo stuff 
+    const [imageUrl, setImageUrl] = useState("");
+    const [image, setImage] = useState(null);
+    const [url, setUrl] = useState("");
+    const [progress, setProgress] = useState(0);
+
+    const handleChange = e => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+    };
+
+    const handleUpload = () => {
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const progress = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                setProgress(progress);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                    .ref("images")
+                    .child(image.name)
+                    .getDownloadURL()
+                    .then(url => {
+                        // console.log("hello:", url);
+                        setUrl(url);
+                        setImageUrl(url);
+                    });
+            }
+        );
+    };
+
+    console.log("image: ", image);
+    //photo stuff end
 
     let user = localStorage.getItem("userProfile");
     user = JSON.parse(user);
@@ -180,7 +226,7 @@ const ReviewForm = ({ editableReview }) => {
                         ))}
                     </select>
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <label html="reviewHeader">(Optional) Header Image URL: </label>
                     <input
                         onChange={handleControlledInputChange}
@@ -189,7 +235,23 @@ const ReviewForm = ({ editableReview }) => {
                         defaultValue={review.imageLocation}
                         placeholder="Add image URL"
                     />
-                </fieldset>
+                </fieldset> */}
+
+
+                <div>
+                    Please upload a review photo!
+                    <br />
+                    <img src={url || "http://via.placeholder.com/300"} alt="review item image" />
+                    <br />
+                    <progress value={progress} max="100" />
+                    <br />
+                    <input type="file" onChange={handleChange} />
+                    <button onClick={handleUpload}>upload</button>
+                    <br />
+                    {url}
+                </div>
+
+
                 <fieldset>
                     <label htmlFor="PublishDateTime">(Optional) Publication Date</label>
                     <input
