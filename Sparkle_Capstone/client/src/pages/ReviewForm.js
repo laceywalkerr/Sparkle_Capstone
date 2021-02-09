@@ -6,6 +6,8 @@ import { storage } from '../firebase';
 import { render } from "react-dom";
 //photo stuff end
 
+import StarRatingSystem from "../pages/StarRatings"
+
 const ReviewForm = ({ editableReview }) => {
 
     const history = useHistory();
@@ -228,31 +230,16 @@ const ReviewForm = ({ editableReview }) => {
                         ))}
                     </select>
                 </fieldset>
-                {/* <fieldset>
-                    <label html="reviewHeader">(Optional) Header Image URL: </label>
-                    <input
-                        onChange={handleControlledInputChange}
-                        id="reviewHeader"
-                        name="imageLocation"
-                        defaultValue={review.imageLocation}
-                        placeholder="Add image URL"
-                    />
-                </fieldset> */}
-
-
                 <div>
                     Please upload a review photo!
                     <br />
-                    {/* {review.imageLocation ? <img src={review.imageLocation} alt="review item image" /> : <img src={url} alt="review item image" />} */}
-
-                    <br />
                     <input type="file" onChange={handleChange} />
-                    {/* <button onClick={handleUpload}>Upload Photo</button> */}
                     <br />
                     {review.imageLocation ? null : url}
                 </div>
-
-
+                <div>
+                    <StarRatingSystem />
+                </div>
                 <fieldset>
                     <label htmlFor="PublishDateTime">(Optional) Publication Date</label>
                     <input
@@ -269,5 +256,6 @@ const ReviewForm = ({ editableReview }) => {
         </div>
     )
 }
+
 
 export default ReviewForm
