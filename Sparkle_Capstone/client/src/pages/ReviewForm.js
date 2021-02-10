@@ -97,7 +97,7 @@ const ReviewForm = ({ editableReview }) => {
     };
 
     const addReview = submittedReview => {
-        debugger
+
         getToken().then(token =>
             fetch(`/api/review`, {
                 method: "POST",
@@ -127,7 +127,7 @@ const ReviewForm = ({ editableReview }) => {
     }
 
     const updateReview = updatedReview => {
-        console.log("Form");
+        // console.log("Form");
         getToken().then(token =>
             fetch(`/api/review/${reviewId}`, {
                 method: "PUT",
@@ -186,7 +186,12 @@ const ReviewForm = ({ editableReview }) => {
 
     const createReview = (e) => {
         e.preventDefault()
-        handleUpload()
+        if (review.imageLocation == undefined) {
+            handleUpload()
+        }
+        else {
+            constructNewReview(review.imageLocation)
+        }
 
     }
 
@@ -244,15 +249,6 @@ const ReviewForm = ({ editableReview }) => {
                     {review.imageLocation ? null : url}
                 </div>
                 <div>
-                    {/* <div>
-                        <StarRatingSystem
-                            count={5}
-                            size={40}
-                            value={review.rating}
-                            activeColor={'red'}
-                            inactiveColor={'#ddd'}
-                            onChange={handleChange} />
-                    </div> */}
                     <StarRatingSystem review={review} />
                 </div>
                 <fieldset>

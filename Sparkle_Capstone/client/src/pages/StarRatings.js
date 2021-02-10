@@ -38,7 +38,6 @@ function StarRatingSystem({ review }) {
     // const [review, setReview] = useState("");
 
     const handleChange = (value) => {
-        debugger
         review.rating = value
         setRating(value);
     }
