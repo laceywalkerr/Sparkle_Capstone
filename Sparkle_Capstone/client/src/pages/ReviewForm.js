@@ -97,7 +97,6 @@ const ReviewForm = ({ editableReview }) => {
     };
 
     const addReview = submittedReview => {
-
         getToken().then(token =>
             fetch(`/api/review`, {
                 method: "POST",
@@ -127,7 +126,6 @@ const ReviewForm = ({ editableReview }) => {
     }
 
     const updateReview = updatedReview => {
-        // console.log("Form");
         getToken().then(token =>
             fetch(`/api/review/${reviewId}`, {
                 method: "PUT",
