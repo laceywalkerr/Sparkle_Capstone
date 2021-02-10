@@ -32,11 +32,11 @@ export const likeScream = (screamId) => dispatch => {
 }
 
 // unlike a reivew
-export const likeScream = (screamId) => dispatch => {
-    axios.get(`/scream/${screamId}/like`)
+export const unlikeScream = (screamId) => dispatch => {
+    axios.get(`/scream/${screamId}/unlike`)
         .then(res => {
             dispatch({
-                type: LIKE_SCREAM,
+                type: UNLIKE_SCREAM,
                 payload: res.data
             })
         })

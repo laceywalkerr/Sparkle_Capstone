@@ -118,10 +118,7 @@ const ReviewDetails = () => {
                         className="btn btn-outline-danger">Yes, Delete</Button>
                 </ModalFooter>
             </Modal>
-
-
         </div>
-
     );
 };
 
