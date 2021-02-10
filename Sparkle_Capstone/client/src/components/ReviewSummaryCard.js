@@ -34,6 +34,9 @@ const ReviewSummaryCard = ({ review }) => {
                         Published on {formatDate(review.publishDateTime)}
                     </p>
                 </div>
+                <div className="col-lg-4 col-sm-12 mt-2 py-3 text-left">
+                    <h5>Star Rating: {review.rating}</h5>
+                </div>
             </div>
         </Card>
     );

@@ -70,6 +70,9 @@ const ReviewDetails = () => {
                     <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
                     </div>
+                    <div>
+                        Star Rating: {review.rating}
+                    </div>
 
                     {
                         // If it's my review, show me edit/delete options

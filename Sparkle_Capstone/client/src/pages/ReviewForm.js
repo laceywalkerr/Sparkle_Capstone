@@ -163,7 +163,8 @@ const ReviewForm = ({ editableReview }) => {
                 content: review.content,
                 categoryId: review.categoryId,
                 imageLocation: url,
-                publishDateTime: review.publishDateTime
+                publishDateTime: review.publishDateTime,
+                rating: review.rating
             })
         } else {
             addReview({
@@ -173,6 +174,7 @@ const ReviewForm = ({ editableReview }) => {
                 categoryId: review.categoryId,
                 imageLocation: url,
                 publishDateTime: review.publishDateTime,
+                rating: review.rating,
                 IsApproved: true
             })
         }

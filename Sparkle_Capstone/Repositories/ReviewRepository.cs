@@ -32,7 +32,8 @@ namespace Sparkle_Capstone.Repositories
                         UserId = r.UserProfileId,
                         DisplayName = r.UserProfile.DisplayName,
                         PublishDateTime = r.PublishDateTime,
-                        Category = r.Category
+                        Category = r.Category,
+                        Rating = r.Rating
                 })
                 .ToList();
         }
@@ -41,18 +42,19 @@ namespace Sparkle_Capstone.Repositories
         {
             return _context.Review
                 .Include(r => r.Category)
-                .Where(r => r.PublishDateTime <= DateTime.Now && r.Category.Name.Contains(p) || r.NameOfProduct.Contains(p) || r.Content.Contains(p) )
+                .Where(r => r.PublishDateTime <= DateTime.Now && r.Category.Name.Contains(p) || r.NameOfProduct.Contains(p) || r.Content.Contains(p))
                 .OrderByDescending(r => r.PublishDateTime)
                 .Select(r => new ReviewSummary()
                 {
                     Id = r.Id,
-                    NameOfProduct = r.NameOfProduct,
-                    Content = r.Content,
-                    ImageLocation = r.ImageLocation,
-                    UserId = r.UserProfileId,
-                    DisplayName = r.UserProfile.DisplayName,
-                    PublishDateTime = r.PublishDateTime,
-                    Category = r.Category
+                        NameOfProduct = r.NameOfProduct,
+                        Content = r.Content,
+                        ImageLocation = r.ImageLocation,
+                        UserId = r.UserProfileId,
+                        DisplayName = r.UserProfile.DisplayName,
+                        PublishDateTime = r.PublishDateTime,
+                        Category = r.Category,
+                        Rating = r.Rating
                 })
                 .ToList();
         }
@@ -80,7 +82,8 @@ namespace Sparkle_Capstone.Repositories
                         UserId = r.UserProfileId,
                         DisplayName = r.UserProfile.DisplayName,
                         PublishDateTime = r.PublishDateTime,
-                        Category = r.Category
+                        Category = r.Category,
+                        Rating = r.Rating
                 })
                 .ToList();
         }
@@ -101,7 +104,6 @@ namespace Sparkle_Capstone.Repositories
             _context.SaveChanges();
         }
 
-
         public void Delete(Review review)
         {
             _context.Review.Remove(review);
@@ -113,7 +115,6 @@ namespace Sparkle_Capstone.Repositories
             _context.Entry(review).State = EntityState.Modified;
             _context.SaveChanges();
         }
-
 
     }
 
