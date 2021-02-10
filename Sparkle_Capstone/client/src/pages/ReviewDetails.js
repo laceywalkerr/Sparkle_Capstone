@@ -66,12 +66,6 @@ const ReviewDetails = () => {
                     <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
                     </div>
-                    <div>
-                        <button type="button" class="btn btn-default btn-sm right">
-                            <span class="glyphicon glyphicon-thumbs-up"></span>
-                            <h2> 👍 </h2>
-                        </button>
-                    </div>
 
                     {
                         // If it's my review, show me edit/delete options
@@ -90,11 +84,8 @@ const ReviewDetails = () => {
                     }
                 </div>
                 <div>{review.content}</div>
-                {/* <div>
-                    <ReviewReactions reviewReactions={reactionCounts} />
-                </div> */}
                 <div>
-                    Star Rating: {review.rating}
+                    {review.rating} Star Rating
                 </div>
 
             </div>
