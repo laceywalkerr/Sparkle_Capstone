@@ -42,7 +42,7 @@ namespace Sparkle_Capstone.Repositories
         {
             return _context.Review
                 .Include(r => r.Category)
-                .Where(r => r.PublishDateTime <= DateTime.Now && r.Category.Name.Contains(p) || r.NameOfProduct.Contains(p) || r.Content.Contains(p))
+                .Where(r => r.PublishDateTime <= DateTime.Now && r.Category.Name.Contains(p) || r.NameOfProduct.Contains(p) )
                 .OrderByDescending(r => r.PublishDateTime)
                 .Select(r => new ReviewSummary()
                 {
