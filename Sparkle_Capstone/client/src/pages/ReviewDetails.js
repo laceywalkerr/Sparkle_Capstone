@@ -61,14 +61,16 @@ const ReviewDetails = () => {
                 <h5 className="text-danger">{review.category.name}</h5>
                 <div className="row">
                     <div className="col">
-                        {/* <img
-                            src={review.userProfile.imageLocation}
-                            alt={review.userProfile.displayName}
-                        /> */}
                         <p className="d-inline-block">Review By: {review.userProfile.displayName}</p>
                     </div>
                     <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-default btn-sm right">
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                            <h2> 👍 </h2>
+                        </button>
                     </div>
 
                     {
@@ -91,6 +93,10 @@ const ReviewDetails = () => {
                 {/* <div>
                     <ReviewReactions reviewReactions={reactionCounts} />
                 </div> */}
+                <div>
+                    Star Rating: {review.rating}
+                </div>
+
             </div>
 
             <Modal isOpen={pendingDelete}>
@@ -119,10 +125,7 @@ const ReviewDetails = () => {
                         className="btn btn-outline-danger">Yes, Delete</Button>
                 </ModalFooter>
             </Modal>
-
-
         </div>
-
     );
 };
 

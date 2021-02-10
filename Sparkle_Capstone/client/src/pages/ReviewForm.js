@@ -6,6 +6,8 @@ import { storage } from '../firebase';
 import { render } from "react-dom";
 //photo stuff end
 
+import StarRatingSystem from "../pages/StarRatings"
+
 const ReviewForm = ({ editableReview }) => {
 
     const history = useHistory();
@@ -13,7 +15,7 @@ const ReviewForm = ({ editableReview }) => {
     const { getToken } = useContext(UserProfileContext)
 
     const [categories, setCategories] = useState([]);
-    const [review, setReview] = useState("");
+    let [review, setReview] = useState("");
 
     const [loading, setLoading] = useState(true);
 
@@ -22,6 +24,9 @@ const ReviewForm = ({ editableReview }) => {
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
+
+    //star stuff
+    // const [rating, setRating] = useState(3);
 
     const handleChange = e => {
         if (e.target.files[0]) {
@@ -121,7 +126,6 @@ const ReviewForm = ({ editableReview }) => {
     }
 
     const updateReview = updatedReview => {
-        console.log("Form");
         getToken().then(token =>
             fetch(`/api/review/${reviewId}`, {
                 method: "PUT",
@@ -161,7 +165,8 @@ const ReviewForm = ({ editableReview }) => {
                 content: review.content,
                 categoryId: review.categoryId,
                 imageLocation: url,
-                publishDateTime: review.publishDateTime
+                publishDateTime: review.publishDateTime,
+                rating: review.rating
             })
         } else {
             addReview({
@@ -171,6 +176,7 @@ const ReviewForm = ({ editableReview }) => {
                 categoryId: review.categoryId,
                 imageLocation: url,
                 publishDateTime: review.publishDateTime,
+                rating: review.rating,
                 IsApproved: true
             })
         }
@@ -178,7 +184,12 @@ const ReviewForm = ({ editableReview }) => {
 
     const createReview = (e) => {
         e.preventDefault()
-        handleUpload()
+        if (review.imageLocation == undefined) {
+            handleUpload()
+        }
+        else {
+            constructNewReview(review.imageLocation)
+        }
 
     }
 
@@ -228,31 +239,16 @@ const ReviewForm = ({ editableReview }) => {
                         ))}
                     </select>
                 </fieldset>
-                {/* <fieldset>
-                    <label html="reviewHeader">(Optional) Header Image URL: </label>
-                    <input
-                        onChange={handleControlledInputChange}
-                        id="reviewHeader"
-                        name="imageLocation"
-                        defaultValue={review.imageLocation}
-                        placeholder="Add image URL"
-                    />
-                </fieldset> */}
-
-
                 <div>
                     Please upload a review photo!
                     <br />
-                    {/* {review.imageLocation ? <img src={review.imageLocation} alt="review item image" /> : <img src={url} alt="review item image" />} */}
-
-                    <br />
                     <input type="file" onChange={handleChange} />
-                    {/* <button onClick={handleUpload}>Upload Photo</button> */}
                     <br />
                     {review.imageLocation ? null : url}
                 </div>
-
-
+                <div>
+                    <StarRatingSystem review={review} />
+                </div>
                 <fieldset>
                     <label htmlFor="PublishDateTime">(Optional) Publication Date</label>
                     <input
@@ -269,5 +265,6 @@ const ReviewForm = ({ editableReview }) => {
         </div>
     )
 }
+
 
 export default ReviewForm

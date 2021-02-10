@@ -18,5 +18,6 @@ namespace Sparkle_Capstone.Models.ViewModels
         public DateTime? PublishDateTime { get; set; }
 
         public Category Category { get; set; }
+        public int Rating { get; set; }
     }
 }
