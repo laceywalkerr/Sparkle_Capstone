@@ -15,7 +15,7 @@ const ReviewForm = ({ editableReview }) => {
     const { getToken } = useContext(UserProfileContext)
 
     const [categories, setCategories] = useState([]);
-    const [review, setReview] = useState("");
+    let [review, setReview] = useState("");
 
     const [loading, setLoading] = useState(true);
 
@@ -97,6 +97,7 @@ const ReviewForm = ({ editableReview }) => {
     };
 
     const addReview = submittedReview => {
+        debugger
         getToken().then(token =>
             fetch(`/api/review`, {
                 method: "POST",
@@ -252,7 +253,7 @@ const ReviewForm = ({ editableReview }) => {
                             inactiveColor={'#ddd'}
                             onChange={handleChange} />
                     </div> */}
-                    <StarRatingSystem />
+                    <StarRatingSystem review={review} />
                 </div>
                 <fieldset>
                     <label htmlFor="PublishDateTime">(Optional) Publication Date</label>

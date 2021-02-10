@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Card } from "reactstrap";
 import formatDate from "../../src/utils/dateFormatter";
+// import { FacebookCounter } from 'react-reactions';
 
 const ReviewSummaryCard = ({ review }) => {
     return (
@@ -39,10 +40,12 @@ const ReviewSummaryCard = ({ review }) => {
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-default btn-sm text-right">
+                    {/* <button type="button" class="btn btn-default btn-sm text-right">
                         <span class="glyphicon glyphicon-thumbs-up"></span>
                         <h2> 👍 </h2>
-                    </button>
+                    </button> */}
+
+                    {/* <FacebookCounter /> */}
                 </div>
             </div>
         </Card>
