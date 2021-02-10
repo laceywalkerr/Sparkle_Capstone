@@ -61,10 +61,6 @@ const ReviewDetails = () => {
                 <h5 className="text-danger">{review.category.name}</h5>
                 <div className="row">
                     <div className="col">
-                        {/* <img
-                            src={review.userProfile.imageLocation}
-                            alt={review.userProfile.displayName}
-                        /> */}
                         <p className="d-inline-block">Review By: {review.userProfile.displayName}</p>
                     </div>
                     <div className="col">

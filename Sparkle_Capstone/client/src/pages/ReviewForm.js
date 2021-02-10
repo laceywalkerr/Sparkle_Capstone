@@ -25,6 +25,9 @@ const ReviewForm = ({ editableReview }) => {
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
 
+    //star stuff
+    // const [rating, setRating] = useState(3);
+
     const handleChange = e => {
         if (e.target.files[0]) {
             setImage(e.target.files[0]);
@@ -240,6 +243,15 @@ const ReviewForm = ({ editableReview }) => {
                     {review.imageLocation ? null : url}
                 </div>
                 <div>
+                    {/* <div>
+                        <StarRatingSystem
+                            count={5}
+                            size={40}
+                            value={review.rating}
+                            activeColor={'red'}
+                            inactiveColor={'#ddd'}
+                            onChange={handleChange} />
+                    </div> */}
                     <StarRatingSystem />
                 </div>
                 <fieldset>

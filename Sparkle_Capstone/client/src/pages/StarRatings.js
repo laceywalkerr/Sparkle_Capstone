@@ -34,6 +34,7 @@ function StarRating({ count, value,
 
 function StarRatingSystem() {
     const [rating, setRating] = useState(3);
+    // const [review, setReview] = useState("");
 
     const handleChange = (value) => {
         setRating(value);
