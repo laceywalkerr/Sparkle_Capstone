@@ -37,6 +37,13 @@ const ReviewSummaryCard = ({ review }) => {
                 <div className="col-lg-4 col-sm-12 mt-2 py-3 text-left">
                     <h5>Star Rating: {review.rating}</h5>
                 </div>
+
+                <div>
+                    <button type="button" class="btn btn-default btn-sm text-right">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                        <h2> 👍 </h2>
+                    </button>
+                </div>
             </div>
         </Card>
     );

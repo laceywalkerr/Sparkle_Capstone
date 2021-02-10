@@ -67,7 +67,10 @@ const ReviewDetails = () => {
                         <p>{formatDate(review.publishDateTime)}</p>
                     </div>
                     <div>
-                        Star Rating: {review.rating}
+                        <button type="button" class="btn btn-default btn-sm right">
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                            <h2> 👍 </h2>
+                        </button>
                     </div>
 
                     {
@@ -90,6 +93,10 @@ const ReviewDetails = () => {
                 {/* <div>
                     <ReviewReactions reviewReactions={reactionCounts} />
                 </div> */}
+                <div>
+                    Star Rating: {review.rating}
+                </div>
+
             </div>
 
             <Modal isOpen={pendingDelete}>
