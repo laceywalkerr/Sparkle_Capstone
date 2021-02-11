@@ -61,8 +61,6 @@ const ReviewForm = ({ editableReview }) => {
         );
     };
 
-    // console.log("image: ", image);
-    //photo stuff end
 
     let user = localStorage.getItem("userProfile");
     user = JSON.parse(user);
@@ -218,7 +216,7 @@ const ReviewForm = ({ editableReview }) => {
                         id="reviewContent"
                         name="content"
                         value={review.content}
-                        maxLength="255"
+                        maxLength="600"
                         placeholder="Add Review Here"
                         rows={10}
                         cols={80}
