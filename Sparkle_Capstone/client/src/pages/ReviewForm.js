@@ -14,7 +14,7 @@ const ReviewForm = ({ editableReview }) => {
     const { getToken } = useContext(UserProfileContext)
 
     const [categories, setCategories] = useState([]);
-    let [review, setReview] = useState("");
+    const [review, setReview] = useState({});
 
     const [loading, setLoading] = useState(true);
 
@@ -34,31 +34,35 @@ const ReviewForm = ({ editableReview }) => {
     };
 
     const handleUpload = () => {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                setProgress(progress);
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage
-                    .ref("images")
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        console.log("hello:", url);
-                        setUrl(url);
-                        setImageUrl(url);
-                        constructNewReview(url);
-                    });
-            }
-        );
+        if (image !== null) {
+            const uploadTask = storage.ref(`images/${image.name}`).put(image);
+            uploadTask.on(
+                "state_changed",
+                snapshot => {
+                    const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    );
+                    setProgress(progress);
+                },
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    storage
+                        .ref("images")
+                        .child(image.name)
+                        .getDownloadURL()
+                        .then(url => {
+                            console.log("hello:", url);
+                            setUrl(url);
+                            setImageUrl(url);
+                            constructNewReview(url);
+                        });
+                }
+            );
+        } else {
+            constructNewReview(review.imageLocation)
+        };
     };
 
 
@@ -181,14 +185,9 @@ const ReviewForm = ({ editableReview }) => {
 
     const createReview = (e) => {
         e.preventDefault()
-        if (review.imageLocation == undefined) {
-            handleUpload()
-        }
-        else {
-            constructNewReview(review.imageLocation)
-        }
-
+        handleUpload()
     }
+
 
     if (!categories) {
         return null
@@ -259,6 +258,7 @@ const ReviewForm = ({ editableReview }) => {
 
 
                 <button className="btn btn-primary" type="submit" disabled={loading}>Submit</button>
+
                 {!editableReview ? null : <button onClick={e => history.push(`/review/${reviewId}`)}>Cancel</button>}
             </form>
         </div>
