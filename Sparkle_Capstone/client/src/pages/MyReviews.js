@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import ReviewList from "../components/ReviewList"
 import { UserProfileContext } from "../providers/UserProfileProvider"
+import { Link } from "react-router-dom";
 
 const MyReviews = () => {
     const { getToken } = useContext(UserProfileContext)
@@ -41,6 +42,9 @@ const MyReviews = () => {
     return (
         <>
             <h1>My Reviews</h1>
+            <p>
+                <Link className="btn btn-primary" to="/review/create">Add A Review</Link>
+            </p>
             { myReviews.length > 0 ? <ReviewList reviews={myReviews} /> : <p>You currently do not have any reviews</p>}
         </>
     )
