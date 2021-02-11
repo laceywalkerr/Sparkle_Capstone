@@ -14,7 +14,7 @@ const ReviewForm = ({ editableReview }) => {
     const { getToken } = useContext(UserProfileContext)
 
     const [categories, setCategories] = useState([]);
-    let [review, setReview] = useState("");
+    const [review, setReview] = useState({});
 
     const [loading, setLoading] = useState(true);
 
@@ -34,7 +34,6 @@ const ReviewForm = ({ editableReview }) => {
     };
 
     const handleUpload = () => {
-        debugger
         if (image !== null) {
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
             uploadTask.on(
@@ -259,6 +258,7 @@ const ReviewForm = ({ editableReview }) => {
 
 
                 <button className="btn btn-primary" type="submit" disabled={loading}>Submit</button>
+
                 {!editableReview ? null : <button onClick={e => history.push(`/review/${reviewId}`)}>Cancel</button>}
             </form>
         </div>
