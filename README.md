@@ -34,7 +34,7 @@ Users can log in, post, edit and delete a post. Users can also rate how they fee
 Other stretch goals include posting a link to the product, as well as possibly using an API. Users can upload their own profile images. Users also have access to a search by category button and comment on reviews.  Full crud on categories. Users will have a views counter and likes on their review. Users cannot repetitively like a post.
 
 <p>
- <a href="https://docs.google.com/document/d/1yyro4quULrfVYc6a53Ft6QWe0I4Nfqwtn-K13EW5zcY/edit?usp=sharing"> Proposal </a>
+ <a href="https://docs.google.com/document/d/1yyro4quULrfVYc6a53Ft6QWe0I4Nfqwtn-K13EW5zcY/edit?usp=sharing"> Project Proposal Form </a>
 </p>
 
 <!-- Secret temporary video for setup [here](https://us02web.zoom.us/rec/share/Bgnm4gt_tnzLDqYjurEu6fNlNFKR1JvUIv6MJPzV3pUn5O7SorCKThA7oZSOENH5.CPfq3-FjcpbbHSvt) Passcode is %wmVL*5@ -->
