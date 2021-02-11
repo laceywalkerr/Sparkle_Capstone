@@ -21,7 +21,7 @@ const ReviewSummaryCard = ({ review }) => {
                     <div>
 
                         <Link to={`/review/${review.id}`}>
-                            <h3>Product: {review.nameOfProduct}</h3>
+                            <h3>{review.nameOfProduct}</h3>
                         </Link>
                         <strong className="text-danger">Category: {review.category.name}</strong>
                     </div>

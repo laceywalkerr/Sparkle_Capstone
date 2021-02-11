@@ -33,9 +33,7 @@ const AppHeader = () => {
                 <a class="navbar-brand" href="http://localhost:3000/">
                     <img src="https://i.imgur.com/iVblKqz.png" alt="Sparkle Logo" width="130" height="50" />
                 </a> <br></br>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
                 {user ? (
                     <NavbarText className="d-sm-none d-md-block">
                         Welcome {user.displayName}

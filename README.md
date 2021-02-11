@@ -14,7 +14,7 @@ Share and rate your favorite makeup products! Ever wonder what your friend is we
 ## ERD:
 <p align="left">
   <a href="https://dbdiagram.io/d/5f8f82c43a78976d7b787a3f">
-    <img src="https://i.imgur.com/h9kh8nE.png">
+    <img src="https://i.imgur.com/xq6NKJ6.png">
   </a>
 </p>
 <br>
@@ -22,7 +22,7 @@ Share and rate your favorite makeup products! Ever wonder what your friend is we
  ## Sketchboard:
  <p align="left">
   <a href="https://sketchboard.me/VCokqAw0aLg#/">
-    <img src="https://i.imgur.com/ehyDWaj.png">
+    <img src="https://i.imgur.com/njD85xf.png">
   </a>
  </p>
  <br>

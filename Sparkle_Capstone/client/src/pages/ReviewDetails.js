@@ -56,13 +56,14 @@ const ReviewDetails = () => {
                 style={{ backgroundImage: `url('${review.imageLocation}')` }}
             ></Jumbotron>
             <div className="container">
-                <h1>Review Details</h1>
+                <h2>Review Details</h2>
                 <h3>{review.nameOfProduct}</h3>
-                <h5 className="text-danger">{review.category.name}</h5>
+                <h5 className="text-danger">Category: {review.category.name}</h5>
                 <div className="row">
                     <div className="col">
                         <p className="d-inline-block">Review By: {review.userProfile.displayName}</p>
                     </div>
+
                     <div className="col">
                         <p>{formatDate(review.publishDateTime)}</p>
                     </div>
@@ -116,6 +117,13 @@ const ReviewDetails = () => {
                         className="btn btn-outline-danger">Yes, Delete</Button>
                 </ModalFooter>
             </Modal>
+
+            <div>
+                <p>
+                    <img src={review.imageLocation} alt="Product Photo" width="400"
+                        height="341"></img>
+                </p>
+            </div>
         </div>
     );
 };
