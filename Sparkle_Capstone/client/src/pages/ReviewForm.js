@@ -3,7 +3,6 @@ import { UserProfileContext } from "../providers/UserProfileProvider"
 import { useHistory, useParams } from "react-router-dom";
 //photo stuff
 import { storage } from '../firebase';
-import { render } from "react-dom";
 //photo stuff end
 
 import StarRatingSystem from "../pages/StarRatings"
@@ -202,7 +201,7 @@ const ReviewForm = ({ editableReview }) => {
             <h1>{!editableReview ? "Create" : "Edit"} Review</h1>
             <form onSubmit={createReview}>
                 <fieldset>
-                    <label htmlFor="reviewTitle">Product Name: </label>
+                    {/* <label htmlFor="reviewTitle">Product Name: </label> */}
                     <input
                         onChange={handleControlledInputChange}
                         maxLength="255"
@@ -213,33 +212,33 @@ const ReviewForm = ({ editableReview }) => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="reviewContent">Content: </label>
+                    {/* <label htmlFor="reviewContent">Content: </label> */}
                     <textarea
                         onChange={handleControlledInputChange}
                         id="reviewContent"
                         name="content"
                         value={review.content}
                         maxLength="255"
-                        placeholder="Add Review Content"
-                        rows={3}
-                        cols={40}
+                        placeholder="Add Review Here"
+                        rows={10}
+                        cols={80}
                         required />
                 </fieldset>
-                <fieldset>
-                    <label htmlFor="reviewCategories">Categories: </label>
+                <fieldset >
+                    {/* <label htmlFor="reviewCategories">Categories: </label> */}
                     <select
                         onChange={handleControlledInputChange}
                         id="reviewCategories"
                         name="categoryId"
                         value={review.categoryId}
                         required >
-                        <option value="0">Choose a category</option>
+                        <option value="0">Select a Category</option>
                         {categories.map(c => (
                             <option value={c.id} key={c.id}>{c.name}</option>
                         ))}
                     </select>
                 </fieldset>
-                <div>
+                <div >
                     Please upload a review photo!
                     <br />
                     <input type="file" onChange={handleChange} />
@@ -250,7 +249,7 @@ const ReviewForm = ({ editableReview }) => {
                     <StarRatingSystem review={review} />
                 </div>
                 <fieldset>
-                    <label htmlFor="PublishDateTime">(Optional) Publication Date</label>
+                    <label htmlFor="PublishDateTime">Date Purchased: </label>
                     <input
                         onChange={handleControlledInputChange}
                         type="date"
@@ -259,7 +258,9 @@ const ReviewForm = ({ editableReview }) => {
                         defaultValue={review.publishDateTime}
                         placeholder=""></input>
                 </fieldset>
-                <button type="submit" disabled={loading}>Submit</button>
+
+
+                <button className="btn btn-primary" type="submit" disabled={loading}>Submit</button>
                 {!editableReview ? null : <button onClick={e => history.push(`/review/${reviewId}`)}>Cancel</button>}
             </form>
         </div>
