@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserProfileContext } from "../providers/UserProfileProvider"
 import ReviewList from "../components/ReviewList.js";
+import { Link } from "react-router-dom";
 
 const Explore = () => {
 
@@ -61,6 +62,9 @@ const Explore = () => {
                     <input onChange={(s) => setSearch(s.target.value)} class="form-control mr-sm-2" type="text" placeholder="Search" />
                     <button onClick={getSearch} class="btn btn-secondary my-2 my-sm-0">Search</button>
                 </div>
+                <p>
+                    <Link className="btn btn-primary" to="/review/create">Add A Review</Link>
+                </p>
                 <ReviewList reviews={reviews} />
             </div>
         </div>

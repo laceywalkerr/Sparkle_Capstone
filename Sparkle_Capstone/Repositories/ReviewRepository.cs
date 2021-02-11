@@ -42,7 +42,7 @@ namespace Sparkle_Capstone.Repositories
         {
             return _context.Review
                 .Include(r => r.Category)
-                .Where(r => r.PublishDateTime <= DateTime.Now && r.Category.Name.Contains(p) || r.NameOfProduct.Contains(p) )
+                .Where(r => r.PublishDateTime <= DateTime.Now && r.Category.Name.Contains(p) || r.NameOfProduct.Contains(p))
                 .OrderByDescending(r => r.PublishDateTime)
                 .Select(r => new ReviewSummary()
                 {
@@ -86,16 +86,6 @@ namespace Sparkle_Capstone.Repositories
                         Rating = r.Rating
                 })
                 .ToList();
-        }
-
-        public List<Likes> GetLikeCounts(int reviewId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Viewed> GetViewCounts(int reviewId)
-        {
-            throw new NotImplementedException();
         }
 
         public void Add(Review review)

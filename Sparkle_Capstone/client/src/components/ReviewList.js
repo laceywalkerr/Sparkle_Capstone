@@ -6,9 +6,7 @@ const ReviewList = ({ reviews }) => {
     return (
 
         <div>
-            <p>
-                <Link className="btn btn-primary" to="/review/create">Add A Review</Link>
-            </p>
+
             {reviews.map((review) => (
                 <div className="m-4" key={review.id}>
                     <ReviewSummaryCard review={review} />

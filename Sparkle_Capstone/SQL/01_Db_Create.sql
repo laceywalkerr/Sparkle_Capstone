@@ -22,7 +22,8 @@ DROP TABLE IF EXISTS [Viewed];
 DROP TABLE IF EXISTS [Likes];
 GO
 
-CREATE TABLE [UserProfile] (
+CREATE TABLE [UserProfile]
+(
   [Id] INTEGER PRIMARY KEY IDENTITY,
   [FirebaseUserId] nvarchar(255) NOT NULL,
   [DisplayName] nvarchar(50) NOT NULL,
@@ -33,13 +34,15 @@ CREATE TABLE [UserProfile] (
 )
 GO
 
-CREATE TABLE [Category] (
+CREATE TABLE [Category]
+(
   [Id] INTEGER PRIMARY KEY IDENTITY,
   [Name] nvarchar(255)
 )
 GO
 
-CREATE TABLE [Review] (
+CREATE TABLE [Review]
+(
   [Id] INTEGER PRIMARY KEY IDENTITY,
   [NameOfProduct] nvarchar(255),
   [Content] text,
@@ -52,13 +55,14 @@ CREATE TABLE [Review] (
   [CategoryId] int,
   [UserProfileId] int,
 
-   CONSTRAINT [FK_Review_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
-   CONSTRAINT [FK_Review_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
+  CONSTRAINT [FK_Review_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
+  CONSTRAINT [FK_Review_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
 
 )
 GO
 
-CREATE TABLE [Likes] (
+CREATE TABLE [Likes]
+(
   [Id] INTEGER PRIMARY KEY IDENTITY,
   [ReviewId] int,
   [UserProfileId] int,
@@ -68,7 +72,8 @@ CREATE TABLE [Likes] (
 )
 GO
 
-CREATE TABLE [Viewed] (
+CREATE TABLE [Viewed]
+(
   [Id] INTEGER PRIMARY KEY IDENTITY,
   [ReviewId] int,
   [UserProfileId] int,
@@ -77,7 +82,5 @@ CREATE TABLE [Viewed] (
   CONSTRAINT [FK_Viewed_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id]),
 )
 GO
-
-
 
 

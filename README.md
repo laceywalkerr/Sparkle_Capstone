@@ -28,10 +28,10 @@ Share and rate your favorite makeup products! Ever wonder what your friend is we
  <br>
  
 ### MVP Requirements
-Users can log in, post, edit and delete a post. Users can also rate how they feel about the product (1-5 stars), have views and likes on their review, and search for products they would like to read up on. Users can upload photos of a product. Users cannot repetitively view or like a post. Users can tag a category to their review,  ie: type of product, or by color.
+Users can log in, post, edit and delete a post. Users can also rate how they feel about the product (1-5 stars), and search for products they would like to read up on. Users can upload photos of a product. Users can tag a category to their review,  ie: type of product, or by color.
 
 ### Stretch Goals
-Other stretch goals include posting a link to the product, as well as possibly using an API. Users can upload their own profile images. Users also have access to a search by category button and comment on reviews.  Full crud on categories.
+Other stretch goals include posting a link to the product, as well as possibly using an API. Users can upload their own profile images. Users also have access to a search by category button and comment on reviews.  Full crud on categories. Users will have a views counter and likes on their review. Users cannot repetitively like a post.
 
 
 
