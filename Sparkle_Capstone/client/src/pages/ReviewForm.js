@@ -34,31 +34,36 @@ const ReviewForm = ({ editableReview }) => {
     };
 
     const handleUpload = () => {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-            "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                setProgress(progress);
-            },
-            error => {
-                console.log(error);
-            },
-            () => {
-                storage
-                    .ref("images")
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        console.log("hello:", url);
-                        setUrl(url);
-                        setImageUrl(url);
-                        constructNewReview(url);
-                    });
-            }
-        );
+        debugger
+        if (image !== null) {
+            const uploadTask = storage.ref(`images/${image.name}`).put(image);
+            uploadTask.on(
+                "state_changed",
+                snapshot => {
+                    const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    );
+                    setProgress(progress);
+                },
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    storage
+                        .ref("images")
+                        .child(image.name)
+                        .getDownloadURL()
+                        .then(url => {
+                            console.log("hello:", url);
+                            setUrl(url);
+                            setImageUrl(url);
+                            constructNewReview(url);
+                        });
+                }
+            );
+        } else {
+            constructNewReview(review.imageLocation)
+        };
     };
 
 
@@ -181,14 +186,9 @@ const ReviewForm = ({ editableReview }) => {
 
     const createReview = (e) => {
         e.preventDefault()
-        if (review.imageLocation == undefined) {
-            handleUpload()
-        }
-        else {
-            constructNewReview(review.imageLocation)
-        }
-
+        handleUpload()
     }
+
 
     if (!categories) {
         return null
