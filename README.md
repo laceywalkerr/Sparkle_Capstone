@@ -33,6 +33,15 @@ Users can log in, post, edit and delete a post. Users can also rate how they fee
 ### Stretch Goals
 Other stretch goals include posting a link to the product, as well as possibly using an API. Users can upload their own profile images. Users also have access to a search by category button and comment on reviews.  Full crud on categories. Users will have a views counter and likes on their review. Users cannot repetitively like a post.
 
+<p align="left">
+    <img src="https://i.imgur.com/l4XkfsK.png">
+</p>
+<br>
+<p align="right">
+    <img src="https://i.imgur.com/SibQrmP.png">
+</p>
+<br>
+
 <p>
  <a href="https://docs.google.com/document/d/1yyro4quULrfVYc6a53Ft6QWe0I4Nfqwtn-K13EW5zcY/edit?usp=sharing"> Project Proposal Form </a>
 </p>
