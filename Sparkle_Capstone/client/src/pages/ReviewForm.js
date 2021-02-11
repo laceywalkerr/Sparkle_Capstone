@@ -61,7 +61,7 @@ const ReviewForm = ({ editableReview }) => {
         );
     };
 
-    console.log("image: ", image);
+    // console.log("image: ", image);
     //photo stuff end
 
     let user = localStorage.getItem("userProfile");

@@ -4,10 +4,10 @@ import { Card } from "reactstrap";
 const CategorySummaryCard = ({ category }) => {
     return (
         <Card>
-            <div className="row">
-                <div className="col-lg-5 col-sm-12 py-3">
+            <div >
+                <div className=" py-3 ">
                     <div>
-                        <h4> {category.name}</h4>
+                        <h4 > {category.name}</h4>
                     </div>
                 </div>
             </div>
