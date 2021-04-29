@@ -48,5 +48,13 @@ Other stretch goals include posting a link to the product, as well as possibly u
  <a href="https://docs.google.com/document/d/1yyro4quULrfVYc6a53Ft6QWe0I4Nfqwtn-K13EW5zcY/edit?usp=sharing"> Project Proposal Form </a>
 </p>
 
+<object width="425" height="350">
+  <param name="movie" value="https://www.youtube.com/watch?v=Clmsv_CtSKI&t=3s" />
+  <param name="wmode" value="transparent" />
+  <embed src="https://www.youtube.com/watch?v=Clmsv_CtSKI&t=3s"
+         type="application/x-shockwave-flash"
+         wmode="transparent" width="425" height="350" />
+</object>
+
 <!-- Secret temporary video for setup [here](https://us02web.zoom.us/rec/share/Bgnm4gt_tnzLDqYjurEu6fNlNFKR1JvUIv6MJPzV3pUn5O7SorCKThA7oZSOENH5.CPfq3-FjcpbbHSvt) Passcode is %wmVL*5@ -->
 
